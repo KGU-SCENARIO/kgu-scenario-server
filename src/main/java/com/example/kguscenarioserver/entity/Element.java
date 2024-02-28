@@ -23,7 +23,7 @@ public class Element {
     private String name;
     private Timestamp updatedAt;
     private Timestamp createdAt;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
     private Element parent;
 }
