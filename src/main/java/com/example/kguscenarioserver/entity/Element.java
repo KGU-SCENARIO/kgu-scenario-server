@@ -21,9 +21,22 @@ public class Element {
     @Enumerated(EnumType.STRING)
     private Type type;
     private String name;
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
+    @Column(name = "created_at")
     private Timestamp createdAt;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
     private Element parent;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
+
 }

@@ -21,5 +21,11 @@ public class Scenario {
     private String memo;
     @Column(columnDefinition = "TEXT")
     private String result;
+    @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @PrePersist
+    protected void onCreate(){
+        createdAt = new Timestamp(System.currentTimeMillis());
+    }
 }
