@@ -39,4 +39,19 @@ public class ScenarioService {
         return scenarioRepository.findAll();
     }
 
+    /*
+    해당 시나리오 삭제
+    */
+    @Transactional
+    public void deleteScenario(String result){
+        scenarioRepository.deleteByResult(result);
+    }
+
+    /*
+    모든 시나리오 삭제
+    */
+    @Transactional
+    public void deleteAllScenario(){
+        scenarioRepository.deleteAll();
+    }
 }
