@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class Scenario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "scenario_name")
+    @Column(name = "scenario_num")
     private Long id;
     private String memo;
     @Column(columnDefinition = "TEXT")

@@ -15,7 +15,6 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Element {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "element_id")
     private Long id;
     @Enumerated(EnumType.STRING)
