@@ -1,7 +1,5 @@
 package com.example.kguscenarioserver.service;
 
-import com.example.kguscenarioserver.dto.scenario.ScenarioRequest;
-import com.example.kguscenarioserver.dto.scenario.ScenarioResponse;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.repository.ScenarioRepository;
 import lombok.RequiredArgsConstructor;

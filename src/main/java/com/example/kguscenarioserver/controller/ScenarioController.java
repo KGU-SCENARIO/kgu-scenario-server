@@ -2,7 +2,7 @@ package com.example.kguscenarioserver.controller;
 
 import com.example.kguscenarioserver.dto.scenario.ScenarioList;
 import com.example.kguscenarioserver.dto.scenario.ScenarioRequest;
-import com.example.kguscenarioserver.dto.scenario.ScenarioResponse;
+import com.example.kguscenarioserver.dto.scenario.ScenarioListResponse;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.service.ScenarioService;
 import jakarta.validation.Valid;
@@ -18,12 +18,12 @@ public class ScenarioController {
 
     private final ScenarioService scenarioService;
     @GetMapping("/scenario_list")
-    public ScenarioResponse scenarioList(){
+    public ScenarioListResponse scenarioList(){
         List<Scenario> scenarios = scenarioService.scenarioList();
         List<ScenarioList> collect = scenarios.stream()
                 .map(m-> new ScenarioList(m.getMemo(), m.getResult()))
                 .collect(Collectors.toList());
-        return new ScenarioResponse(collect,collect.size());
+        return new ScenarioListResponse(collect,collect.size());
     }
 
     @PostMapping("/scenario_save")
