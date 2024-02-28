@@ -1,7 +1,6 @@
 package com.example.kguscenarioserver.controller;
 
-import com.example.kguscenarioserver.dto.scenario.ScenarioList;
-import com.example.kguscenarioserver.dto.scenario.ScenarioRequest;
+import com.example.kguscenarioserver.dto.scenario.ScenarioDto;
 import com.example.kguscenarioserver.dto.scenario.ScenarioListResponse;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.service.ScenarioService;
@@ -20,15 +19,15 @@ public class ScenarioController {
     @GetMapping("/scenario_list")
     public ScenarioListResponse scenarioList(){
         List<Scenario> scenarios = scenarioService.scenarioList();
-        List<ScenarioList> collect = scenarios.stream()
-                .map(m-> new ScenarioList(m.getMemo(), m.getResult()))
+        List<ScenarioDto> collect = scenarios.stream()
+                .map(m-> new ScenarioDto(m.getMemo(), m.getResult()))
                 .collect(Collectors.toList());
         return new ScenarioListResponse(collect,collect.size());
     }
 
     @PostMapping("/scenario_save")
     public String scenarioSave(@RequestBody @Valid
-                                         ScenarioRequest request){
+                               ScenarioDto request){
         Scenario scenario = new Scenario();
         scenario.setMemo(request.getMemo());
         scenario.setResult(request.getResult());
