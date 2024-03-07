@@ -45,5 +45,11 @@ public class ElementController {
         }
     }
 
-
+    @PostMapping("/update_element")
+    public void updateElement(@RequestBody @Valid Long id,
+                              @RequestBody @Valid String updateName,
+                              HttpServletResponse response) throws IOException{
+        elementService.updateElement(id, updateName);
+        response.sendRedirect("");
+    }
 }
