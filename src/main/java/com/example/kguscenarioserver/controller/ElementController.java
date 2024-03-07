@@ -1,6 +1,7 @@
 package com.example.kguscenarioserver.controller;
 
 import com.example.kguscenarioserver.dto.element.ElementRequest;
+import com.example.kguscenarioserver.dto.element.UpdateElementRequest;
 import com.example.kguscenarioserver.entity.Element;
 import com.example.kguscenarioserver.entity.Type;
 import com.example.kguscenarioserver.service.ElementService;
@@ -28,7 +29,7 @@ public class ElementController {
         }
         elementService.saveElement(saveElement);
 
-        response.sendRedirect(String.valueOf(saveElement));
+        response.sendRedirect("/scenario_list");
     }
 
     @DeleteMapping("/delete_element/{id}")
@@ -37,7 +38,7 @@ public class ElementController {
         try{
             Element element = elementService.getElement(id);
             elementService.deleteElement(element);
-            response.sendRedirect(element.getName() + " 삭제");
+            response.sendRedirect("/scenario_list");
         } catch (NoSuchElementException e){
             response.sendError(response.SC_NOT_FOUND,"해당 시나리오가 없습니다.");
         } catch (Exception e){
@@ -46,10 +47,9 @@ public class ElementController {
     }
 
     @PostMapping("/update_element")
-    public void updateElement(@RequestBody @Valid Long id,
-                              @RequestBody @Valid String updateName,
+    public void updateElement(@RequestBody @Valid UpdateElementRequest request,
                               HttpServletResponse response) throws IOException{
-        elementService.updateElement(id, updateName);
-        response.sendRedirect("");
+        elementService.updateElement(request.getId(), request.getUpdateName());
+        response.sendRedirect("/scenario_list");
     }
 }

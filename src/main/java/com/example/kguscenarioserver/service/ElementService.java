@@ -20,15 +20,7 @@ public class ElementService {
 
     @Transactional
     public void saveElement(Element saveElement){
-        validateElement(saveElement);
         elementRepository.save(saveElement);
-    }
-
-    public void validateElement(Element element){
-        List<Element> findElements = elementRepository.findByNameAndParent(element.getName(),element.getParent());
-        if (!findElements.isEmpty()){
-            throw new IllegalStateException("이미 존재하는 요소입니다.");
-        }
     }
 
     @Transactional

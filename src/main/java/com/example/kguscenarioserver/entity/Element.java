@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,9 +27,12 @@ public class Element {
     private Timestamp updatedAt;
     @Column(name = "created_at")
     private Timestamp createdAt;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Element parent;
+    @OneToMany(mappedBy = "parent",cascade = CascadeType.ALL)
+    private List<Element> children = new ArrayList<>();
+
 
     @PrePersist
     protected void onCreate() {

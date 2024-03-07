@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface ElementRepository extends JpaRepository<Element,Long> {
     List<Element> findByNameAndParent(String name, Element parent);
-    List<Element> deleteByNameAndParent(String name, Element parent);
 }
