@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ScenarioListResponse<T> {
+public class ScenarioListDto<T> {
     private T data;
-    private int count;
 }

@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ScenarioRepository extends JpaRepository<Scenario,Long> {
-    List<Scenario> findByResult(String name);
 
-    List<Scenario> deleteByResult(String result);
 }
