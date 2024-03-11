@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ElementRequest {
+    private Long id;
     private Type type;
     private String name;
     private Long parentId;
