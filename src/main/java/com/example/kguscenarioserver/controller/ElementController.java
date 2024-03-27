@@ -5,16 +5,14 @@ import com.example.kguscenarioserver.dto.element.UpdateElementRequest;
 import com.example.kguscenarioserver.entity.Element;
 import com.example.kguscenarioserver.entity.Type;
 import com.example.kguscenarioserver.service.ElementService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,12 +22,14 @@ public class ElementController {
 
     //element 저장
     @PostMapping("/save_element")
+    @Operation(summary = "element 저장")
     public void saveElement(@RequestBody @Valid ElementRequest request){
         elementService.saveElement(convertToElement(request));
     }
 
     //element-layer 여러개 한번에 저장
     @PostMapping("/save_elements")
+    @Operation(summary = "element를 여러개 저장")
     public void saveElementsLayer(@RequestBody @Valid List<ElementRequest> requests){
         for(ElementRequest request : requests){
             elementService.saveElement(convertToElement(request));
@@ -37,6 +37,7 @@ public class ElementController {
     }
     //element 삭제
     @DeleteMapping("/delete_element/{id}")
+    @Operation(summary = "element를 삭제")
     public void deleteElement(@PathVariable Long id){
         Element element = elementService.getElement(id);
         elementService.deleteElement(element);
@@ -44,6 +45,7 @@ public class ElementController {
 
     //element 수정
     @PostMapping("/update_element")
+    @Operation(summary = "element 내용을 수정")
     public void updateElement(@RequestBody @Valid UpdateElementRequest request,
                               HttpServletResponse response) throws IOException{
         elementService.updateElement(request.getId(), request.getUpdateName());

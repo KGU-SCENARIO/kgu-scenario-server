@@ -4,6 +4,7 @@ import com.example.kguscenarioserver.dto.scenario.ScenarioDto;
 import com.example.kguscenarioserver.dto.scenario.ScenarioListDto;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.service.ScenarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class ScenarioController {
 
     //시나리오 리스트 조회
     @GetMapping("/scenario_list")
+    @Operation(summary = "scenario list 조회")
     public ScenarioListDto scenarioList(){
         List<Scenario> scenarios = scenarioService.scenarioList();
         List<ScenarioDto> collect = scenarios.stream()
@@ -31,6 +33,7 @@ public class ScenarioController {
 
     //시나리오 저장
     @PostMapping("/save_scenario")
+    @Operation(summary = "scenario 한가지 저장")
     public void saveScenario(@RequestBody @Valid ScenarioDto request,
                              HttpServletResponse response) throws IOException {
         scenarioService.saveScenario(convertToScenario(request));
@@ -39,6 +42,7 @@ public class ScenarioController {
 
     //시나리오들을 한번에 저장
     @PostMapping("/save_scenarios")
+    @Operation(summary = "scenario 여러개 저장")
     public void saveScenarios(@RequestBody @Valid List<ScenarioDto> request){
         List<Scenario> scenarios = request.stream()
                 .map(m -> convertToScenario(m))
@@ -49,6 +53,7 @@ public class ScenarioController {
 
     //시나리오를 삭제
     @DeleteMapping("/delete_scenario/{id}")
+    @Operation(summary = "해당 scenario 삭제")
     public void deleteScenario(@PathVariable Long id,
                                HttpServletResponse response) throws IOException {
         try{
@@ -63,6 +68,7 @@ public class ScenarioController {
 
     //모든 시나리오 삭제
     @DeleteMapping("/delete_all_scenario")
+    @Operation(summary = "모든 scenario 삭제")
     public void deleteAllScenario(HttpServletResponse response) throws IOException {
         scenarioService.deleteAllScenario();
         response.sendRedirect("/scenario_list");
