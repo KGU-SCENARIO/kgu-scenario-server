@@ -1,6 +1,7 @@
 package com.example.kguscenarioserver.controller;
 
-import com.example.kguscenarioserver.dto.scenario.ScenarioDto;
+import com.example.kguscenarioserver.dto.scenario.RequestScenario;
+import com.example.kguscenarioserver.dto.scenario.ResponseScenario;
 import com.example.kguscenarioserver.dto.scenario.ScenarioListDto;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.service.ScenarioService;
@@ -8,12 +9,18 @@ import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
+import static com.example.kguscenarioserver.dto.scenario.RequestScenario.convertToScenario;
+import static com.example.kguscenarioserver.entity.Scenario.convertToScenarioDto;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,18 +30,15 @@ public class ScenarioController {
     //시나리오 리스트 조회
     @GetMapping("/scenario_list")
     @Operation(summary = "scenario list 조회")
-    public ScenarioListDto scenarioList(){
-        List<Scenario> scenarios = scenarioService.scenarioList();
-        List<ScenarioDto> collect = scenarios.stream()
-                .map(m-> convertToScenarioDto(m))
-                .collect(Collectors.toList());
-        return new ScenarioListDto(collect);
+    public ScenarioListDto scenarioList(@PageableDefault(page = 1) Pageable pageable){
+        Page<ResponseScenario> responseScenarioPage = scenarioService.scenarioList(pageable);
+        return new ScenarioListDto(responseScenarioPage);
     }
 
     //시나리오 저장
     @PostMapping("/save_scenario")
     @Operation(summary = "scenario 한가지 저장")
-    public void saveScenario(@RequestBody @Valid ScenarioDto request,
+    public void saveScenario(@RequestBody @Valid RequestScenario request,
                              HttpServletResponse response) throws IOException {
         scenarioService.saveScenario(convertToScenario(request));
         response.sendRedirect("/scenario_list");
@@ -43,12 +47,12 @@ public class ScenarioController {
     //시나리오들을 한번에 저장
     @PostMapping("/save_scenarios")
     @Operation(summary = "scenario 여러개 저장")
-    public void saveScenarios(@RequestBody @Valid List<ScenarioDto> request){
-        List<Scenario> scenarios = request.stream()
+    public void saveScenarioList(@RequestBody @Valid List<RequestScenario> request){
+        List<Scenario> scenarioList = request.stream()
                 .map(m -> convertToScenario(m))
                 .collect(Collectors.toList());
 
-        scenarioService.saveScenarios(scenarios);
+        scenarioService.saveScenarioList(scenarioList);
     }
 
     //시나리오를 삭제
@@ -72,18 +76,6 @@ public class ScenarioController {
     public void deleteAllScenario(HttpServletResponse response) throws IOException {
         scenarioService.deleteAllScenario();
         response.sendRedirect("/scenario_list");
-    }
-
-    //dto -> entity 변환
-    private Scenario convertToScenario(ScenarioDto dto) {
-        Scenario scenario = new Scenario(dto.getMemo(), dto.getResult());
-        return scenario;
-    }
-
-    //entity -> dto 변환
-    private ScenarioDto convertToScenarioDto(Scenario scenario) {
-        ScenarioDto scenarioDto = new ScenarioDto(scenario.getMemo(),scenario.getResult());
-        return scenarioDto;
     }
 
 }

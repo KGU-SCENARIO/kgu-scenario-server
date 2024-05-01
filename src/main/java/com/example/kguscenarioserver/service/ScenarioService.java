@@ -1,9 +1,13 @@
 package com.example.kguscenarioserver.service;
 
-import com.example.kguscenarioserver.dto.scenario.ScenarioDto;
+import com.example.kguscenarioserver.dto.scenario.ResponseScenario;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.repository.ScenarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,17 +27,24 @@ public class ScenarioService {
     }
 
     @Transactional
-    public void saveScenarios(List<Scenario> scenarios){
+    public void saveScenarioList(List<Scenario> scenarios){
         scenarioRepository.saveAll(scenarios);
     }
 
     /*
     시나리오 조회
     */
-    public List<Scenario> scenarioList(){
-        return scenarioRepository.findAll();
-    }
+    public Page<ResponseScenario> scenarioList(Pageable pageable){
+        int page = pageable.getPageNumber() -1;
+        int pageLimit = 4;
+        Page<Scenario> scenarioPage = scenarioRepository.findAll(PageRequest.of(page,pageLimit, Sort.by(Sort.Direction.DESC,"id")));
 
+        Page<ResponseScenario> responseScenarioPage = scenarioPage.map(
+                scenario -> new ResponseScenario(scenario.getResult(),scenario.getCreatedAt())
+        );
+
+        return responseScenarioPage;
+    }
     /*
     해당 시나리오 삭제
     */

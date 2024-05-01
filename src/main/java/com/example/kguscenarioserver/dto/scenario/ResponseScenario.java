@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScenarioDto {
-    private String memo;
+public class ResponseScenario {
     private String result;
+    private Timestamp createdAt;
+
 }

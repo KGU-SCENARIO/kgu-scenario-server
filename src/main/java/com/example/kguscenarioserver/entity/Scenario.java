@@ -1,5 +1,6 @@
 package com.example.kguscenarioserver.entity;
 
+import com.example.kguscenarioserver.dto.scenario.ResponseScenario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,8 +20,6 @@ public class Scenario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "scenario_num")
     private Long id;
-    //특이사항 메모 공간
-    private String memo;
     //조합된 scenario 한줄로 저장
     @Column(columnDefinition = "TEXT")
     private String result;
@@ -28,9 +27,13 @@ public class Scenario {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    public Scenario(String memo,String result){
-        this.memo = memo;
+    public Scenario(String result){
         this.result = result;
+    }
+
+    public static ResponseScenario convertToScenarioDto(Scenario scenario) {
+        ResponseScenario scenarioDto = new ResponseScenario(scenario.getResult(),scenario.getCreatedAt());
+        return scenarioDto;
     }
     @PrePersist
     protected void onCreate(){
