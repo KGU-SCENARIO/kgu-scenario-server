@@ -6,6 +6,7 @@ import com.example.kguscenarioserver.dto.scenario.ScenarioListDto;
 import com.example.kguscenarioserver.entity.Scenario;
 import com.example.kguscenarioserver.service.ScenarioService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class ScenarioController {
     //시나리오 리스트 조회
     @GetMapping("/scenario_list")
     @Operation(summary = "scenario list 조회")
-    public ScenarioListDto scenarioList(@PageableDefault(page = 1) Pageable pageable){
+    public ScenarioListDto scenarioList(@Parameter(hidden = true) @PageableDefault(page = 1) Pageable pageable){
         Page<ResponseScenario> responseScenarioPage = scenarioService.scenarioList(pageable);
         return new ScenarioListDto(responseScenarioPage);
     }
@@ -58,7 +59,7 @@ public class ScenarioController {
     //시나리오를 삭제
     @DeleteMapping("/delete_scenario/{id}")
     @Operation(summary = "해당 scenario 삭제")
-    public void deleteScenario(@PathVariable Long id,
+    public void deleteScenario(@Parameter(required = true)@PathVariable Long id,
                                HttpServletResponse response) throws IOException {
         try{
             scenarioService.deleteScenario(id);

@@ -6,6 +6,7 @@ import com.example.kguscenarioserver.entity.Element;
 import com.example.kguscenarioserver.entity.Type;
 import com.example.kguscenarioserver.service.ElementService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,14 +24,14 @@ public class ElementController {
     //element 저장
     @PostMapping("/save_element")
     @Operation(summary = "element 저장")
-    public void saveElement(@RequestBody @Valid ElementRequest request){
+    public void saveElement(@Parameter(required = true)@RequestBody @Valid ElementRequest request){
         elementService.saveElement(convertToElement(request));
     }
 
     //element-layer 여러개 한번에 저장
     @PostMapping("/save_elements")
     @Operation(summary = "element를 여러개 저장")
-    public void saveElementsLayer(@RequestBody @Valid List<ElementRequest> requests){
+    public void saveElementsLayer(@Parameter(required = true)@RequestBody @Valid List<ElementRequest> requests){
         for(ElementRequest request : requests){
             elementService.saveElement(convertToElement(request));
         }
@@ -38,7 +39,7 @@ public class ElementController {
     //element 삭제
     @DeleteMapping("/delete_element/{id}")
     @Operation(summary = "element를 삭제")
-    public void deleteElement(@PathVariable Long id){
+    public void deleteElement(@Parameter(required = true)@PathVariable Long id){
         Element element = elementService.getElement(id);
         elementService.deleteElement(element);
     }
@@ -63,7 +64,6 @@ public class ElementController {
             Long parentId = request.getParentId();
             element.setParent(elementService.getElement(parentId));
         }
-
         return element;
     }
 
