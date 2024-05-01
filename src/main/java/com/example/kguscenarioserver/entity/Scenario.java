@@ -1,6 +1,5 @@
 package com.example.kguscenarioserver.entity;
 
-import com.example.kguscenarioserver.dto.scenario.ScenarioDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
