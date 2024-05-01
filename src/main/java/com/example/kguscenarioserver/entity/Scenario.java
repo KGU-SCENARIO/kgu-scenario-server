@@ -1,5 +1,6 @@
 package com.example.kguscenarioserver.entity;
 
+import com.example.kguscenarioserver.dto.scenario.ScenarioDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,10 @@ public class Scenario {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
+    public Scenario(String memo,String result){
+        this.memo = memo;
+        this.result = result;
+    }
     @PrePersist
     protected void onCreate(){
         createdAt = new Timestamp(System.currentTimeMillis());

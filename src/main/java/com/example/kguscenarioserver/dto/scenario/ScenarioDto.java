@@ -10,5 +10,4 @@ import lombok.NoArgsConstructor;
 public class ScenarioDto {
     private String memo;
     private String result;
-
 }

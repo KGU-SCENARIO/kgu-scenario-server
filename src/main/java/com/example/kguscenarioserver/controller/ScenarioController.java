@@ -76,17 +76,13 @@ public class ScenarioController {
 
     //dto -> entity 변환
     private Scenario convertToScenario(ScenarioDto dto) {
-        Scenario scenario = new Scenario();
-        scenario.setMemo(dto.getMemo());
-        scenario.setResult(dto.getResult());
+        Scenario scenario = new Scenario(dto.getMemo(), dto.getResult());
         return scenario;
     }
 
     //entity -> dto 변환
     private ScenarioDto convertToScenarioDto(Scenario scenario) {
-        ScenarioDto scenarioDto = new ScenarioDto();
-        scenario.setMemo(scenario.getMemo());
-        scenario.setResult(scenario.getResult());
+        ScenarioDto scenarioDto = new ScenarioDto(scenario.getMemo(),scenario.getResult());
         return scenarioDto;
     }
 
