@@ -50,13 +50,12 @@ public class ElementController {
     public void updateElement(@RequestBody @Valid UpdateElementRequest request,
                               HttpServletResponse response) throws IOException{
         elementService.updateElement(request.getId(), request.getUpdateName());
-        response.sendRedirect("/scenario_list");
     }
 
     //dto -> entity 변환
     private Element convertToElement(ElementRequest request) {
         Element element = new Element(request);
-        
+
         if(element.getType() != Type.LAYER){
             Long parentId = request.getParentId();
             element.setParent(elementService.getElement(parentId));
