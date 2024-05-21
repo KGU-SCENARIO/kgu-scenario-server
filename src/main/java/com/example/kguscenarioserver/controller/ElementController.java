@@ -55,11 +55,8 @@ public class ElementController {
 
     //dto -> entity 변환
     private Element convertToElement(ElementRequest request) {
-        Element element = new Element();
-        element.setId(request.getId());
-        element.setType(request.getType());
-        element.setName(request.getName());
-
+        Element element = new Element(request);
+        
         if(element.getType() != Type.LAYER){
             Long parentId = request.getParentId();
             element.setParent(elementService.getElement(parentId));

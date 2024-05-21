@@ -1,5 +1,6 @@
 package com.example.kguscenarioserver.entity;
 
+import com.example.kguscenarioserver.dto.element.ElementRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,6 +35,10 @@ public class Element {
     private List<Element> children = new ArrayList<>();
 
 
+    public Element(ElementRequest request){
+        this.setType(request.getType());
+        this.setName(request.getName());
+    }
     @PrePersist
     protected void onCreate() {
         createdAt = new Timestamp(System.currentTimeMillis());
