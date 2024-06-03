@@ -1,4 +1,4 @@
-package com.example.kguscenarioserver.service;
+package kguscenariobuilderserver.service;
 
 import com.example.kguscenarioserver.dto.scenario.ResponseScenario;
 import com.example.kguscenarioserver.entity.Scenario;

@@ -1,6 +1,6 @@
-package com.example.kguscenarioserver.controller;
+package kguscenariobuilderserver.controller;
 
-import com.example.kguscenarioserver.dto.scenario.RequestScenario;
+import kguscenariobuilderserver.dto.scenario.RequestScenario;
 import com.example.kguscenarioserver.dto.scenario.ResponseScenario;
 import com.example.kguscenarioserver.dto.scenario.ScenarioListDto;
 import com.example.kguscenarioserver.entity.Scenario;

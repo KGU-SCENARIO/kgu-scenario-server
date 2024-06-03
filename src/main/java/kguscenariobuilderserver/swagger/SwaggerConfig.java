@@ -1,4 +1,4 @@
-package com.example.kguscenarioserver.swagger;
+package kguscenariobuilderserver.swagger;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

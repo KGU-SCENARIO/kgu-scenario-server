@@ -1,4 +1,4 @@
-package com.example.kguscenarioserver.repository;
+package kguscenariobuilderserver.repository;
 
 import com.example.kguscenarioserver.entity.Scenario;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.example.kguscenarioserver.dto.scenario;
+package kguscenariobuilderserver.scenario;
 
 import com.example.kguscenarioserver.entity.Scenario;
 import lombok.AllArgsConstructor;
