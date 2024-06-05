@@ -17,19 +17,26 @@ public class Scenario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "scenario_num")
     private Long id;
-    //조합된 scenario 한줄로 저장
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @OneToOne
+    @JoinColumn(name = "layer1_id")
     private Layer1 layer1;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "layer2_id")
     private Layer2 layer2;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "layer3_id")
     private Layer3 layer3;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "layer4_id")
     private Layer4 layer4;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "layer5_id")
     private Layer5 layer5;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "layer6_id")
     private Layer6 layer6;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "layer7_id")
     private Layer7 layer7;
 }
