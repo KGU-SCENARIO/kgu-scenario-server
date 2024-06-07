@@ -1,12 +1,14 @@
 package kguscenariobuilderserver.service;
 
 import kguscenariobuilderserver.dto.InsertScenario;
+import kguscenariobuilderserver.dto.SaveScenariosResult;
 import kguscenariobuilderserver.dto.ScenarioDto;
 import kguscenariobuilderserver.entity.Scenario;
 import kguscenariobuilderserver.repository.ScenarioDao;
 import kguscenariobuilderserver.repository.ScenarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class ScenarioService {
     private final ScenarioDao scenarioDao;
     private final ScenarioRepository scenarioRepository;
 
-    public void saveScenarios(InsertScenario insertScenario){
+    public SaveScenariosResult saveScenarios(InsertScenario insertScenario){
         scenarioDao.insertLayer1(insertScenario.getLayer1Dtos());
         scenarioDao.insertLayer2(insertScenario.getLayer2Dtos());
         scenarioDao.insertLayer3(insertScenario.getLayer3Dtos());
@@ -25,6 +27,8 @@ public class ScenarioService {
         scenarioDao.insertLayer5(insertScenario.getLayer5Dtos());
         scenarioDao.insertLayer6(insertScenario.getLayer6Dtos());
         scenarioDao.insertLayer7(insertScenario.getLayer7Dtos());
+
+        return new SaveScenariosResult(insertScenario);
     }
 
     public List<ScenarioDto> readScenarioDtos(){
@@ -34,4 +38,6 @@ public class ScenarioService {
     public List<Scenario> readScenarios(){
         return scenarioRepository.findAll();
     }
-    }
+
+
+}

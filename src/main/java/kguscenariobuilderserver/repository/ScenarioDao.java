@@ -1,6 +1,6 @@
 package kguscenariobuilderserver.repository;
 
-import kguscenariobuilderserver.dto.*;
+import kguscenariobuilderserver.dto.layer.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
