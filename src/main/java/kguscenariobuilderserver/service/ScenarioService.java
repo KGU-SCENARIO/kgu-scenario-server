@@ -24,7 +24,7 @@ public class ScenarioService {
         //scenarioDao.insertLayer4(insertScenario.getLayer4Dtos());
         scenarioDao.insertLayer5(insertScenario.getLayer5Dtos());
         scenarioDao.insertLayer6(insertScenario.getLayer6Dtos());
-        scenarioDao.insertLayer7(insertScenario.getLayer7Dtos())
+        scenarioDao.insertLayer7(insertScenario.getLayer7Dtos());
     }
 
     public List<ScenarioDto> readScenarioDtos(){
