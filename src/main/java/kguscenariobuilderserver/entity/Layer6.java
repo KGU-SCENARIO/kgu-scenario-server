@@ -1,9 +1,10 @@
 package kguscenariobuilderserver.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.repository.query.Param;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Layer6 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

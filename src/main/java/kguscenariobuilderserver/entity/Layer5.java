@@ -1,8 +1,10 @@
 package kguscenariobuilderserver.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Layer5 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
