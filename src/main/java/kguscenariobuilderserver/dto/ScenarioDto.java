@@ -1,5 +1,6 @@
 package kguscenariobuilderserver.dto;
 
+import kguscenariobuilderserver.dto.layer.*;
 import kguscenariobuilderserver.entity.Scenario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,6 @@ public class ScenarioDto {
         this.layer5Dto = Layer5Dto.toDto(scenario.getLayer5());
         this.layer6Dto = Layer6Dto.toDto(scenario.getLayer6());
         this.layer7Dto = Layer7Dto.toDto(scenario.getLayer7());
-
     };
+
 }

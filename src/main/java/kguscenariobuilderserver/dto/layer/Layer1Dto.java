@@ -1,4 +1,4 @@
-package kguscenariobuilderserver.dto;
+package kguscenariobuilderserver.dto.layer;
 
 import kguscenariobuilderserver.entity.Layer1;
 import lombok.AllArgsConstructor;
