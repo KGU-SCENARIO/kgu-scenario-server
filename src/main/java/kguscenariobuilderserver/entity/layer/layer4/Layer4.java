@@ -3,9 +3,11 @@ package kguscenariobuilderserver.entity.layer.layer4;
 import jakarta.persistence.*;
 import kguscenariobuilderserver.entity.Scenario;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class Layer4 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,19 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import farmeasy.server.dto.response.Response;
 
+
 @RestController
 @RequiredArgsConstructor
 public class ScenarioController {
 
     private final ScenarioService scenarioService;
 
-    @GetMapping("scenarios")
+    @GetMapping("/scenarios")
     public Response readScenarios(){
-        return Response.success(scenarioService.readScenarioDtos());
+        return Response.success(scenarioService.readScenarioDTOs());
     }
 
-    @PostMapping("scenarios")
+    @PostMapping("/scenarios")
     public Response insertScenarios(@RequestBody InsertScenario insertScenario){
         return Response.success(scenarioService.saveScenarios(insertScenario));
     }
+
 }
