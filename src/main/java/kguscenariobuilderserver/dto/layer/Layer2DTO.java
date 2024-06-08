@@ -1,12 +1,12 @@
 package kguscenariobuilderserver.dto.layer;
 
-import kguscenariobuilderserver.entity.Layer2;
+import kguscenariobuilderserver.entity.layer.Layer2;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Layer2Dto {
+public class Layer2DTO {
     private String 중앙분리대;
     private String 방호울타리;
     private String 충격흡수시설;

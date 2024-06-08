@@ -1,12 +1,12 @@
 package kguscenariobuilderserver.dto.layer;
 
-import kguscenariobuilderserver.entity.Layer5;
+import kguscenariobuilderserver.entity.layer.Layer5;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Layer5Dto {
+public class Layer5DTO {
     private String 시간대;
     private String 요일;
     private String 날씨;

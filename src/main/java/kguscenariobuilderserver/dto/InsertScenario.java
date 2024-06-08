@@ -9,11 +9,11 @@ import java.util.List;
 @Getter
 @Setter
 public class InsertScenario {
-    private List<Layer1Dto> layer1Dtos;
-    private List<Layer2Dto> layer2Dtos;
-    private List<Layer3Dto> layer3Dtos;
-    private List<Layer4Dto> layer4Dtos;
-    private List<Layer5Dto> layer5Dtos;
-    private List<Layer6Dto> layer6Dtos;
-    private List<Layer7Dto> layer7Dtos;
+    private List<Layer1DTO> layer1DTOs;
+    private List<Layer2DTO> layer2DTOs;
+    private List<Layer3DTO> layer3DTOs;
+    private List<Layer4DTO> layer4DTOs;
+    private List<Layer5DTO> layer5DTOs;
+    private List<Layer6DTO> layer6DTOs;
+    private List<Layer7DTO> layer7DTOs;
 }

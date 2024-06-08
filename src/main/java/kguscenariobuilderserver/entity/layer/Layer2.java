@@ -1,6 +1,7 @@
-package kguscenariobuilderserver.entity;
+package kguscenariobuilderserver.entity.layer;
 
 import jakarta.persistence.*;
+import kguscenariobuilderserver.entity.Scenario;
 import lombok.Getter;
 
 @Entity

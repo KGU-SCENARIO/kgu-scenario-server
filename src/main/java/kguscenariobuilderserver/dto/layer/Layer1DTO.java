@@ -1,12 +1,12 @@
 package kguscenariobuilderserver.dto.layer;
 
-import kguscenariobuilderserver.entity.Layer1;
+import kguscenariobuilderserver.entity.layer.Layer1;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Layer1Dto {
+public class Layer1DTO {
     private String 도로_기능과_등급;
     private String 차로폭;
     private String 갓길폭;

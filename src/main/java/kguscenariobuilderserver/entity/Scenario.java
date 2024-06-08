@@ -1,6 +1,8 @@
 package kguscenariobuilderserver.entity;
 
 import jakarta.persistence.*;
+import kguscenariobuilderserver.entity.layer.*;
+import kguscenariobuilderserver.entity.layer.layer4.Layer4;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

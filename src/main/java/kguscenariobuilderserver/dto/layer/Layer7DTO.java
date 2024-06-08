@@ -1,12 +1,12 @@
 package kguscenariobuilderserver.dto.layer;
 
-import kguscenariobuilderserver.entity.Layer7;
+import kguscenariobuilderserver.entity.layer.Layer7;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Layer7Dto {
+public class Layer7DTO {
     private String 법ㆍ규제;
 
     public static Layer7Dto toDto(Layer7 layer7){

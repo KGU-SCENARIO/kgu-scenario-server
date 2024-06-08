@@ -20,13 +20,13 @@ public class ScenarioService {
     private final ScenarioRepository scenarioRepository;
 
     public SaveScenariosResult saveScenarios(InsertScenario insertScenario){
-        scenarioDao.insertLayer1(insertScenario.getLayer1Dtos());
-        scenarioDao.insertLayer2(insertScenario.getLayer2Dtos());
-        scenarioDao.insertLayer3(insertScenario.getLayer3Dtos());
-        //scenarioDao.insertLayer4(insertScenario.getLayer4Dtos());
-        scenarioDao.insertLayer5(insertScenario.getLayer5Dtos());
-        scenarioDao.insertLayer6(insertScenario.getLayer6Dtos());
-        scenarioDao.insertLayer7(insertScenario.getLayer7Dtos());
+        scenarioDao.insertLayer1(insertScenario.getLayer1DTOs());
+        scenarioDao.insertLayer2(insertScenario.getLayer2DTOs());
+        scenarioDao.insertLayer3(insertScenario.getLayer3DTOs());
+        scenarioDao.insertLayer4(insertScenario.getLayer4DTOs());
+        scenarioDao.insertLayer5(insertScenario.getLayer5DTOs());
+        scenarioDao.insertLayer6(insertScenario.getLayer6DTOs());
+        scenarioDao.insertLayer7(insertScenario.getLayer7DTOs());
 
         return new SaveScenariosResult(insertScenario);
     }

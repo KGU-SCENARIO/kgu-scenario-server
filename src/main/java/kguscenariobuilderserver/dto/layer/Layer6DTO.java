@@ -1,13 +1,12 @@
 package kguscenariobuilderserver.dto.layer;
 
-import kguscenariobuilderserver.entity.Layer6;
+import kguscenariobuilderserver.entity.layer.Layer6;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 @AllArgsConstructor
-public class Layer6Dto {
+public class Layer6DTO {
     private String Camera센서;
     private String Rader센서;
     private String LiDAR센서;
