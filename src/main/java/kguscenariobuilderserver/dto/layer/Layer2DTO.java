@@ -32,8 +32,8 @@ public class Layer2DTO {
     private String 보호구역;
     private String 전용도로;
 
-    public static Layer2Dto toDto(Layer2 layer2){
-        return new Layer2Dto(
+    public static Layer2DTO toDTO(Layer2 layer2){
+        return new Layer2DTO(
                 layer2.get중앙분리대(),
                 layer2.get방호울타리(),
                 layer2.get충격흡수시설(),

@@ -10,22 +10,22 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ScenarioDto {
-    private Layer1Dto layer1Dto;
-    private Layer2Dto layer2Dto;
-    private Layer3Dto layer3Dto;
-    private Layer4Dto layer4Dto;
-    private Layer5Dto layer5Dto;
-    private Layer6Dto layer6Dto;
-    private Layer7Dto layer7Dto;
+    private Layer1DTO layer1DTO;
+    private Layer2DTO layer2DTO;
+    private Layer3DTO layer3DTO;
+    private Layer4DTO layer4DTO;
+    private Layer5DTO layer5DTO;
+    private Layer6DTO layer6DTO;
+    private Layer7DTO layer7DTO;
 
     public ScenarioDto(Scenario scenario){
-        this.layer1Dto = Layer1Dto.toDto(scenario.getLayer1());
-        this.layer2Dto = Layer2Dto.toDto(scenario.getLayer2());
-        this.layer3Dto = Layer3Dto.toDto(scenario.getLayer3());
-        //this.layer4Dto = Layer4Dto.toDto(scenario.getLayer4());
-        this.layer5Dto = Layer5Dto.toDto(scenario.getLayer5());
-        this.layer6Dto = Layer6Dto.toDto(scenario.getLayer6());
-        this.layer7Dto = Layer7Dto.toDto(scenario.getLayer7());
+        this.layer1DTO = Layer1DTO.toDTO(scenario.getLayer1());
+        this.layer2DTO = Layer2DTO.toDTO(scenario.getLayer2());
+        this.layer3DTO = Layer3DTO.toDTO(scenario.getLayer3());
+        //this.layer4DTO = Layer4Dto.toDTO(scenario.getLayer4());
+        this.layer5DTO = Layer5DTO.toDTO(scenario.getLayer5());
+        this.layer6DTO = Layer6DTO.toDTO(scenario.getLayer6());
+        this.layer7DTO = Layer7DTO.toDTO(scenario.getLayer7());
     };
 
 }

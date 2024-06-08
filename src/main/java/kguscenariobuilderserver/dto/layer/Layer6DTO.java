@@ -18,8 +18,8 @@ public class Layer6DTO {
     private String GPS정보;
     private String 전자지도정보;
 
-    public static Layer6Dto toDto(Layer6 layer6){
-        return new Layer6Dto(
+    public static Layer6DTO toDTO(Layer6 layer6){
+        return new Layer6DTO(
                 layer6.getCamera센서(),
                 layer6.getRader센서(),
                 layer6.getLiDAR센서(),

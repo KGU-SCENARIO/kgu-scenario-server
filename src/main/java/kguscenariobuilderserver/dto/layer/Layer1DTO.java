@@ -17,8 +17,8 @@ public class Layer1DTO {
     private String 노면상태;
     private String 도로유형;
 
-    public static Layer1Dto toDto(Layer1 layer1){
-        return new Layer1Dto(
+    public static Layer1DTO toDTO(Layer1 layer1){
+        return new Layer1DTO(
                 layer1.get도로_기능과_등급(),
                 layer1.get차로폭(),
                 layer1.get갓길폭(),

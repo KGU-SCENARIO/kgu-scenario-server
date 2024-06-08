@@ -13,8 +13,8 @@ public class Layer5DTO {
     private String 기온;
     private String 조도;
 
-    public static Layer5Dto toDto(Layer5 layer5){
-        return new Layer5Dto(
+    public static Layer5DTO toDTO(Layer5 layer5){
+        return new Layer5DTO(
                 layer5.get시간대(),
                 layer5.get요일(),
                 layer5.get날씨(),

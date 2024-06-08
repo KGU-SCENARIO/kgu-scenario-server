@@ -9,8 +9,8 @@ import lombok.Getter;
 public class Layer7DTO {
     private String 법ㆍ규제;
 
-    public static Layer7Dto toDto(Layer7 layer7){
-        return new Layer7Dto(
+    public static Layer7DTO toDTO(Layer7 layer7){
+        return new Layer7DTO(
                 layer7.get법ㆍ규제()
         );
     }
