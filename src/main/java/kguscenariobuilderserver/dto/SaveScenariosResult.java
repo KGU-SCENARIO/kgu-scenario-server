@@ -10,13 +10,13 @@ public class SaveScenariosResult {
     private int layer7Size;
 
     public SaveScenariosResult(InsertScenario insertScenario){
-        this.layer1Size = insertScenario.getLayer1Dtos().size();
-        this.layer2Size = insertScenario.getLayer2Dtos().size();
-        this.layer3Size = insertScenario.getLayer3Dtos().size();
-        this.layer4Size = insertScenario.getLayer4Dtos().size();
-        this.layer5Size = insertScenario.getLayer5Dtos().size();
-        this.layer6Size = insertScenario.getLayer6Dtos().size();
-        this.layer7Size = insertScenario.getLayer7Dtos().size();
+        this.layer1Size = insertScenario.getLayer1DTOs().size();
+        this.layer2Size = insertScenario.getLayer2DTOs().size();
+        this.layer3Size = insertScenario.getLayer3DTOs().size();
+        this.layer4Size = insertScenario.getLayer4DTOs().size();
+        this.layer5Size = insertScenario.getLayer5DTOs().size();
+        this.layer6Size = insertScenario.getLayer6DTOs().size();
+        this.layer7Size = insertScenario.getLayer7DTOs().size();
     }
 
 }
