@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ScenarioDao {
+public class ScenarioDAO {
     private final JdbcTemplate jdbcTemplate;
 
     private int[] batchInsert(String sql, BatchPreparedStatementSetter pss) {
@@ -92,7 +92,11 @@ public class ScenarioDao {
     }
 
     public int[] insertLayer4(final List<Layer4DTO> layer4DTOS) {
-        String sql = "insert into Test (NPC1_객체종류, NPC1_객체위치_차로, NPC1_객체위치_상대거리, NPC1_객체속도, NPC1_객체가감속도, NPC1_Trigger_가감속, NPC1_객체행동_시작, NPC1_객체행동_동작, NPC1_Trigger_동작, NPC2_객체종류, NPC2_객체위치_차로, NPC2_객체위치_상대거리, NPC2_객체속도, NPC2_객체가감속도, NPC2_Trigger_가감속, NPC2_객체행동_시작, NPC2_객체행동_동작, NPC2_Trigger_동작) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Test (NPC1_객체종류, NPC1_객체위치_차로, NPC1_객체위치_상대거리, NPC1_객체속도, NPC1_객체가감속도, NPC1_Trigger_가감속, NPC1_객체행동_시작, NPC1_객체행동_동작, NPC1_Trigger_동작," +
+                     "NPC2_객체종류, NPC2_객체위치_차로, NPC2_객체위치_상대거리, NPC2_객체속도, NPC2_객체가감속도, NPC2_Trigger_가감속, NPC2_객체행동_시작, NPC2_객체행동_동작, NPC2_Trigger_동작,"+
+                     "NPC3_객체종류, NPC3_객체위치_차로, NPC3_객체위치_상대거리, NPC3_객체속도, NPC3_객체가감속도, NPC3_Trigger_가감속, NPC3_객체행동_시작, NPC3_객체행동_동작, NPC3_Trigger_동작,"+
+                     "NPC4_객체종류, NPC4_객체위치_차로, NPC4_객체위치_상대거리, NPC4_객체속도, NPC4_객체가감속도, NPC4_Trigger_가감속, NPC4_객체행동_시작, NPC4_객체행동_동작, NPC4_Trigger_동작,"+
+                     "객체종류, 객체위치_차로, 객체속도, 객체행동_시작, 객체예상행동_동작) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer4DTO layer4DTO = layer4DTOS.get(i);
@@ -105,6 +109,7 @@ public class ScenarioDao {
                 ps.setString(7, layer4DTO.getNpc1_객체행동_시작());
                 ps.setString(8, layer4DTO.getNpc1_객체행동_동작());
                 ps.setString(9, layer4DTO.getNpc1_Trigger_동작());
+
                 ps.setString(10, layer4DTO.getNpc2_객체종류());
                 ps.setString(11, layer4DTO.getNpc2_객체위치_차로());
                 ps.setString(12, layer4DTO.getNpc2_객체위치_상대거리());
@@ -114,6 +119,7 @@ public class ScenarioDao {
                 ps.setString(16, layer4DTO.getNpc2_객체행동_시작());
                 ps.setString(17, layer4DTO.getNpc2_객체행동_동작());
                 ps.setString(18, layer4DTO.getNpc2_Trigger_동작());
+
                 ps.setString(19, layer4DTO.getNpc3_객체종류());
                 ps.setString(20, layer4DTO.getNpc3_객체위치_차로());
                 ps.setString(21, layer4DTO.getNpc3_객체위치_상대거리());
@@ -123,6 +129,7 @@ public class ScenarioDao {
                 ps.setString(25, layer4DTO.getNpc3_객체행동_시작());
                 ps.setString(26, layer4DTO.getNpc3_객체행동_동작());
                 ps.setString(27, layer4DTO.getNpc3_Trigger_동작());
+
                 ps.setString(28, layer4DTO.getNpc4_객체종류());
                 ps.setString(29, layer4DTO.getNpc4_객체위치_차로());
                 ps.setString(30, layer4DTO.getNpc4_객체위치_상대거리());
@@ -132,6 +139,12 @@ public class ScenarioDao {
                 ps.setString(34, layer4DTO.getNpc4_객체행동_시작());
                 ps.setString(35, layer4DTO.getNpc4_객체행동_동작());
                 ps.setString(36, layer4DTO.getNpc4_Trigger_동작());
+
+                ps.setString(37, layer4DTO.get객체종류());
+                ps.setString(38, layer4DTO.get객체위치_차로());
+                ps.setString(39, layer4DTO.get객체속도());
+                ps.setString(40, layer4DTO.get객체행동_시작());
+                ps.setString(41, layer4DTO.get객체예상행동_동작());
 
             }
             public int getBatchSize() {
@@ -193,7 +206,7 @@ public class ScenarioDao {
         });
     }
 
-    public int[] scenarioInsert(int scenarioSize){
+    public int[] insertScenario(int scenarioSize){
         String sql = "insert into Scenario (layer1, layer2, layer3, layer4, layer5, layer6, layer7) values (?, ?, ?, ?, ?, ?, ?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
