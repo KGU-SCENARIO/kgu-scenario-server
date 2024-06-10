@@ -3,8 +3,10 @@ package kguscenariobuilderserver.dto.layer;
 import kguscenariobuilderserver.entity.layer.Layer3;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class Layer3DTO {
     private String 도로공사;

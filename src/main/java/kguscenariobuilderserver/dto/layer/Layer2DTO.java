@@ -3,8 +3,10 @@ package kguscenariobuilderserver.dto.layer;
 import kguscenariobuilderserver.entity.layer.Layer2;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class Layer2DTO {
     private String 중앙분리대;

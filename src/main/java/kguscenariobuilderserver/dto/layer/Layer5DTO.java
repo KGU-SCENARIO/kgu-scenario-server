@@ -3,8 +3,10 @@ package kguscenariobuilderserver.dto.layer;
 import kguscenariobuilderserver.entity.layer.Layer5;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class Layer5DTO {
     private String 시간대;

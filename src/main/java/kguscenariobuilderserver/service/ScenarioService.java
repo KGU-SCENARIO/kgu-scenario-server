@@ -19,7 +19,6 @@ public class ScenarioService {
 
     private final ScenarioDAO scenarioDAO;
     private final ScenarioRepository scenarioRepository;
-
     public SaveScenariosResult saveScenarios(InsertScenario insertScenario){
 
         int scenarioSize = validateScenarioSize(insertScenario);

@@ -3,8 +3,10 @@ package kguscenariobuilderserver.dto.layer;
 import kguscenariobuilderserver.entity.layer.Layer6;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class Layer6DTO {
     private String Camera센서;
