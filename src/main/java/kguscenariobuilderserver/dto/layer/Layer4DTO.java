@@ -110,9 +110,11 @@ public class Layer4DTO {
     자율 주행차
 
     */
+    @JsonProperty("객체종류")
     private String 객체종류;
     @JsonProperty("객체위치-차로")
     private String 객체위치_차로;
+    @JsonProperty("객체속도")
     private String 객체속도;
     @JsonProperty("객체 행동(시작)")
     private String 객체행동_시작;
