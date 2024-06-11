@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Layer6DTO {
     private String Camera센서;
-    private String Rader센서;
+    private String Radar센서;
     private String LiDAR센서;
     private String V2I;
     private String V2V;
@@ -25,7 +25,7 @@ public class Layer6DTO {
     public static Layer6DTO toDTO(Layer6 layer6){
         return new Layer6DTO(
                 layer6.getCamera센서(),
-                layer6.getRader센서(),
+                layer6.getRadar센서(),
                 layer6.getLiDAR센서(),
                 layer6.getV2I(),
                 layer6.getV2V(),

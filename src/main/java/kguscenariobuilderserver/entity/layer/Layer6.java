@@ -14,7 +14,7 @@ public class Layer6 {
     private Scenario scenario;
 
     private String Camera센서;
-    private String Rader센서;
+    private String Radar센서;
     private String LiDAR센서;
     private String V2I;
     private String V2V;

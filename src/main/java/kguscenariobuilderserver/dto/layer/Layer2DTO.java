@@ -31,13 +31,16 @@ public class Layer2DTO {
     @JsonProperty("차량신호")
     private String 차량신호;
 
-    @JsonProperty("도로상태예고")
+    @JsonProperty("도로상태 예고")
     private String 도로상태예고;
 
-    @JsonProperty("노면상황예고")
+    @JsonProperty("노면상황 예고")
     private String 노면상황예고;
+    
+    @JsonProperty("기상상황 예고")
+    private String 기상상황예고;
 
-    @JsonProperty("기타주의예고")
+    @JsonProperty("기타주의 예고")
     private String 기타주의예고;
 
     @JsonProperty("통행금지")
@@ -61,19 +64,19 @@ public class Layer2DTO {
     @JsonProperty("차선")
     private String 차선;
 
-    @JsonProperty("사전예고표시")
+    @JsonProperty("사전예고 표시")
     private String 사전예고표시;
 
-    @JsonProperty("안전속도표시")
+    @JsonProperty("안전속도 표시")
     private String 안전속도표시;
 
-    @JsonProperty("금지구역표시")
+    @JsonProperty("금지구역 표시")
     private String 금지구역표시;
 
     @JsonProperty("최고제한속도")
     private String 최고제한속도;
 
-    @JsonProperty("최저제한속도")
+    @JsonProperty("-")
     private String 최저제한속도;
 
     @JsonProperty("보호구역")
@@ -93,6 +96,7 @@ public class Layer2DTO {
                 layer2.get차량신호(),
                 layer2.get도로상태예고(),
                 layer2.get노면상황예고(),
+                layer2.get기상상황예고(),
                 layer2.get기타주의예고(),
                 layer2.get통행금지(),
                 layer2.get통행제한(),

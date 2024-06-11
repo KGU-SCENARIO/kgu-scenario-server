@@ -70,6 +70,7 @@ public class Layer4 {
             @AttributeOverride(name="Trigger_동작", column=@Column(name="NPC4_Trigger_동작"))
     })
     private Npc NPC4;
+    private String 교통상황_LOS;
 
     @Embedded
     private 자율주행차 자율주행차;

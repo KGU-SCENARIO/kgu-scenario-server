@@ -105,21 +105,25 @@ public class Layer4DTO {
     @JsonProperty("NPC4 Trigger(동작)")
     private String npc4_Trigger_동작;
 
+
+    @JsonProperty("교통상황(LOS)")
+    private String 교통상황_LOS;
+
     /*
 
     자율 주행차
 
     */
-    @JsonProperty("객체종류")
-    private String 객체종류;
-    @JsonProperty("객체위치-차로")
-    private String 객체위치_차로;
-    @JsonProperty("객체속도")
-    private String 객체속도;
-    @JsonProperty("객체 행동(시작)")
-    private String 객체행동_시작;
-    @JsonProperty("객체 예상 행동(동작)")
-    private String 객체예상행동_동작;
+    @JsonProperty("자율주행차 객체종류")
+    private String 자율주행차_객체종류;
+    @JsonProperty("자율주행차 객체위치-차로")
+    private String 자율주행차_객체위치_차로;
+    @JsonProperty("자율주행차 객체속도")
+    private String 자율주행차_객체속도;
+    @JsonProperty("자율주행차 객체 행동(시작)")
+    private String 자율주행차_객체행동_시작;
+    @JsonProperty("자율주행차 객체 예상 행동(동작)")
+    private String 자율주행차_객체예상행동_동작;
 
     public static Layer4DTO toDTO(Layer4 layer4) {
         Layer4DTO layer4DTO = new Layer4DTO();
@@ -163,11 +167,11 @@ public class Layer4DTO {
             layer4DTO.setNpc4_객체행동_동작(layer4.getNPC3().get객체행동_동작());
             layer4DTO.setNpc4_Trigger_동작(layer4.getNPC3().getTrigger_동작());
 
-            layer4DTO.set객체종류(layer4.get자율주행차().get객체종류());
-            layer4DTO.set객체위치_차로(layer4.get자율주행차().get객체위치_차로());
-            layer4DTO.set객체속도(layer4.get자율주행차().get객체속도());
-            layer4DTO.set객체행동_시작(layer4.get자율주행차().get객체행동_시작());
-            layer4DTO.set객체예상행동_동작(layer4.get자율주행차().get객체예상행동_동작());
+            layer4DTO.set자율주행차_객체종류(layer4.get자율주행차().get자율주행차_객체종류());
+            layer4DTO.set자율주행차_객체위치_차로(layer4.get자율주행차().get자율주행차_객체위치_차로());
+            layer4DTO.set자율주행차_객체속도(layer4.get자율주행차().get자율주행차_객체속도());
+            layer4DTO.set자율주행차_객체행동_시작(layer4.get자율주행차().get자율주행차_객체행동_시작());
+            layer4DTO.set자율주행차_객체예상행동_동작(layer4.get자율주행차().get자율주행차_객체예상행동_동작());
         }
         return layer4DTO;
     }

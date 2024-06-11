@@ -19,7 +19,7 @@ public class ScenarioService {
 
     private final ScenarioDAO scenarioDAO;
     private final ScenarioRepository scenarioRepository;
-    public SaveScenariosResult saveScenarios(InsertScenario insertScenario){
+    public String saveScenarios(InsertScenario insertScenario){
 
         int scenarioSize = validateScenarioSize(insertScenario);
         scenarioDAO.insertLayer1(insertScenario.getLayer1DTOs());
@@ -29,9 +29,9 @@ public class ScenarioService {
         scenarioDAO.insertLayer5(insertScenario.getLayer5DTOs());
         scenarioDAO.insertLayer6(insertScenario.getLayer6DTOs());
         scenarioDAO.insertLayer7(insertScenario.getLayer7DTOs());
-        scenarioDAO.insertScenario(scenarioSize);
+        //scenarioDAO.insertScenario(scenarioSize);
 
-        return new SaveScenariosResult(insertScenario);
+        return scenarioSize + "개 시나리오 저장 성공 !";
     }
 
     public List<ScenarioDTO> readScenarioDTOs(){

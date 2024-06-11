@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Layer1DTO {
-    @JsonProperty("도로_기능과_등급")
+    @JsonProperty("도로 기능과 등급")
     private String 도로_기능과_등급;
 
     @JsonProperty("차로폭")
@@ -26,13 +26,13 @@ public class Layer1DTO {
     @JsonProperty("도로경사")
     private String 도로경사;
 
-    @JsonProperty("차로수")
+    @JsonProperty("차로 수")
     private String 차로수;
 
-    @JsonProperty("도로포장")
+    @JsonProperty("도로 포장")
     private String 도로포장;
 
-    @JsonProperty("노면상태")
+    @JsonProperty("노면 상태")
     private String 노면상태;
 
     @JsonProperty("도로유형")

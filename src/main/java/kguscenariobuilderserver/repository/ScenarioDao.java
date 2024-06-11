@@ -34,7 +34,7 @@ public class ScenarioDAO {
     }
 
     public int[] insertLayer2(final List<Layer2DTO> layer2DTOs) {
-        String sql = "insert into Layer2 (중앙분리대, 방호울타리, 충격흡수시설, 연속조명, 국부조명, 과속방지턱, 차량신호, 도로상태예고, 노면상황예고, 기타주의예고, 통행금지, 통행제한, 금지사항, 도로지정, 통행방법, 중앙선, 차선, 사전예고표시, 안전속도표시, 금지구역표시, 최고제한속도, 최저제한속도, 보호구역, 전용도로) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer2 (중앙분리대, 방호울타리, 충격흡수시설, 연속조명, 국부조명, 과속방지턱, 차량신호, 도로상태예고, 노면상황예고, 기상상황예고, 기타주의예고, 통행금지, 통행제한, 금지사항, 도로지정, 통행방법, 중앙선, 차선, 사전예고표시, 안전속도표시, 금지구역표시, 최고제한속도, 최저제한속도, 보호구역, 전용도로) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer2DTO layer2DTO = layer2DTOs.get(i);
@@ -60,11 +60,11 @@ public class ScenarioDAO {
     }
 
     public int[] insertLayer4(final List<Layer4DTO> layer4DTOS) {
-        String sql = "insert into Test (NPC1_객체종류, NPC1_객체위치_차로, NPC1_객체위치_상대거리, NPC1_객체속도, NPC1_객체가감속도, NPC1_Trigger_가감속, NPC1_객체행동_시작, NPC1_객체행동_동작, NPC1_Trigger_동작," +
+        String sql = "insert into Layer4 (NPC1_객체종류, NPC1_객체위치_차로, NPC1_객체위치_상대거리, NPC1_객체속도, NPC1_객체가감속도, NPC1_Trigger_가감속, NPC1_객체행동_시작, NPC1_객체행동_동작, NPC1_Trigger_동작," +
                      "NPC2_객체종류, NPC2_객체위치_차로, NPC2_객체위치_상대거리, NPC2_객체속도, NPC2_객체가감속도, NPC2_Trigger_가감속, NPC2_객체행동_시작, NPC2_객체행동_동작, NPC2_Trigger_동작,"+
                      "NPC3_객체종류, NPC3_객체위치_차로, NPC3_객체위치_상대거리, NPC3_객체속도, NPC3_객체가감속도, NPC3_Trigger_가감속, NPC3_객체행동_시작, NPC3_객체행동_동작, NPC3_Trigger_동작,"+
                      "NPC4_객체종류, NPC4_객체위치_차로, NPC4_객체위치_상대거리, NPC4_객체속도, NPC4_객체가감속도, NPC4_Trigger_가감속, NPC4_객체행동_시작, NPC4_객체행동_동작, NPC4_Trigger_동작,"+
-                     "객체종류, 객체위치_차로, 객체속도, 객체행동_시작, 객체예상행동_동작) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                     "교통상황_LOS, 자율주행차_객체종류, 자율주행차_객체위치_차로, 자율주행차_객체속도, 자율주행차_객체행동_시작, 자율주행차_객체예상행동_동작) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer4DTO layer4DTO = layer4DTOS.get(i);
@@ -91,7 +91,7 @@ public class ScenarioDAO {
     }
 
     public int[] insertLayer6(final List<Layer6DTO> layer6DTOs) {
-        String sql = "insert into Layer6 (Camera센서, Rader센서, LiDAR센서, V2I, V2V, V2P, V2N, V2C, GPS정보, 전자지도정보) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer6 (Camera센서, Radar센서, LiDAR센서, V2I, V2V, V2P, V2N, V2C, GPS정보, 전자지도정보) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer6DTO layer6DTO = layer6DTOs.get(i);
@@ -104,7 +104,7 @@ public class ScenarioDAO {
     }
 
     public int[] insertLayer7(final List<Layer7DTO> layer7DTOs) {
-        String sql = "insert into Layer7 (법_규제) values (?)";
+        String sql = "insert into Layer7 (법ㆍ규제) values (?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer7DTO layer7DTO = layer7DTOs.get(i);

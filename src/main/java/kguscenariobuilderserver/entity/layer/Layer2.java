@@ -22,6 +22,7 @@ public class Layer2 {
     private String 차량신호;
     private String 도로상태예고;
     private String 노면상황예고;
+    private String 기상상황예고;
     private String 기타주의예고;
     private String 통행금지;
     private String 통행제한;
