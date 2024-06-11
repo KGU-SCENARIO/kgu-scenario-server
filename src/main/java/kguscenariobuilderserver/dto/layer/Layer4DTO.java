@@ -17,7 +17,7 @@ public class Layer4DTO {
     @JsonProperty("NPC1 객체종류")
     private String npc1_객체종류;
     @JsonProperty("NPC1 객체위치-차로")
-    private String npc1_객체위치_차로;
+    private int npc1_객체위치_차로;
     @JsonProperty("NPC1 객체위치-상대거리")
     private String npc1_객체위치_상대거리;
     @JsonProperty("NPC1 객체속도")
@@ -41,7 +41,7 @@ public class Layer4DTO {
     @JsonProperty("NPC2 객체종류")
     private String npc2_객체종류;
     @JsonProperty("NPC2 객체위치-차로")
-    private String npc2_객체위치_차로;
+    private int npc2_객체위치_차로;
     @JsonProperty("NPC2 객체위치-상대거리")
     private String npc2_객체위치_상대거리;
     @JsonProperty("NPC2 객체속도")
@@ -65,7 +65,7 @@ public class Layer4DTO {
     @JsonProperty("NPC3 객체종류")
     private String npc3_객체종류;
     @JsonProperty("NPC3 객체위치-차로")
-    private String npc3_객체위치_차로;
+    private int npc3_객체위치_차로;
     @JsonProperty("NPC3 객체위치-상대거리")
     private String npc3_객체위치_상대거리;
     @JsonProperty("NPC3 객체속도")
@@ -89,7 +89,7 @@ public class Layer4DTO {
     @JsonProperty("NPC4 객체종류")
     private String npc4_객체종류;
     @JsonProperty("NPC4 객체위치-차로")
-    private String npc4_객체위치_차로;
+    private int npc4_객체위치_차로;
     @JsonProperty("NPC4 객체위치-상대거리")
     private String npc4_객체위치_상대거리;
     @JsonProperty("NPC4 객체속도")
@@ -117,7 +117,7 @@ public class Layer4DTO {
     @JsonProperty("자율주행차 객체종류")
     private String 자율주행차_객체종류;
     @JsonProperty("자율주행차 객체위치-차로")
-    private String 자율주행차_객체위치_차로;
+    private int 자율주행차_객체위치_차로;
     @JsonProperty("자율주행차 객체속도")
     private String 자율주행차_객체속도;
     @JsonProperty("자율주행차 객체 행동(시작)")

@@ -121,7 +121,7 @@ public class ScenarioDAO {
         String countSql = "SELECT COUNT(*) FROM Scenario";
         int currentCount = jdbcTemplate.queryForObject(countSql, Integer.class);
 
-        String sql = "insert into Scenario (layer1, layer2, layer3, layer4, layer5, layer6, layer7) values (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Scenario (layer1_id, layer2_id, layer3_id, layer4_id, layer5_id, layer6_id, layer7_id) values (?, ?, ?, ?, ?, ?, ?)";
         return batchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 int newId = currentCount + i + 1;

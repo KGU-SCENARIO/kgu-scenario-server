@@ -34,7 +34,7 @@ public class Layer2 {
     private String 사전예고표시;
     private String 안전속도표시;
     private String 금지구역표시;
-    private String 최고제한속도;
+    private int 최고제한속도;
     private String 최저제한속도;
     private String 보호구역;
     private String 전용도로;

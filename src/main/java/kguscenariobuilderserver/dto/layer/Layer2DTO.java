@@ -74,7 +74,7 @@ public class Layer2DTO {
     private String 금지구역표시;
 
     @JsonProperty("최고제한속도")
-    private String 최고제한속도;
+    private int 최고제한속도;
 
     @JsonProperty("-")
     private String 최저제한속도;

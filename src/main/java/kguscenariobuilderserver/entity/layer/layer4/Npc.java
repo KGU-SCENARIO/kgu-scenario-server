@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class Npc {
     private String 객체종류;
-    private String 객체위치_차로;
+    private int 객체위치_차로;
     private String 객체위치_상대거리;
     private String 객체속도;
     private String 객체가감속도;
