@@ -12,7 +12,6 @@ public class Layer1 {
     private Long id;
     @OneToOne(mappedBy = "layer1",fetch = FetchType.LAZY)
     private Scenario scenario;
-
     private String 도로_기능과_등급;
     private String 차로폭;
     private String 갓길폭;

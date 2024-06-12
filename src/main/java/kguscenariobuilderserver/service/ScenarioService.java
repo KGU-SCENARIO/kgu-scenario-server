@@ -20,16 +20,16 @@ public class ScenarioService {
     private final ScenarioDAO scenarioDAO;
     private final ScenarioRepository scenarioRepository;
     public String saveScenarios(InsertScenario insertScenario){
-
         int scenarioSize = validateScenarioSize(insertScenario);
-        scenarioDAO.insertLayer1(insertScenario.getLayer1DTOs());
-        scenarioDAO.insertLayer2(insertScenario.getLayer2DTOs());
-        scenarioDAO.insertLayer3(insertScenario.getLayer3DTOs());
-        scenarioDAO.insertLayer4(insertScenario.getLayer4DTOs());
-        scenarioDAO.insertLayer5(insertScenario.getLayer5DTOs());
-        scenarioDAO.insertLayer6(insertScenario.getLayer6DTOs());
-        scenarioDAO.insertLayer7(insertScenario.getLayer7DTOs());
-        //scenarioDAO.insertScenario(scenarioSize);
+        Long maxId = scenarioDAO.maxId();
+        scenarioDAO.insertLayer1(insertScenario.getLayer1DTOs(), maxId);
+        scenarioDAO.insertLayer2(insertScenario.getLayer2DTOs(), maxId);
+        scenarioDAO.insertLayer3(insertScenario.getLayer3DTOs(), maxId);
+        scenarioDAO.insertLayer4(insertScenario.getLayer4DTOs(), maxId);
+        scenarioDAO.insertLayer5(insertScenario.getLayer5DTOs(), maxId);
+        scenarioDAO.insertLayer6(insertScenario.getLayer6DTOs(), maxId);
+        scenarioDAO.insertLayer7(insertScenario.getLayer7DTOs(), maxId);
+        scenarioDAO.insertScenario(scenarioSize, maxId);
 
         return scenarioSize + "개 시나리오 저장 성공 !";
     }
