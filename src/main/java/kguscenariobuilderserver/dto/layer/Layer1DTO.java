@@ -3,13 +3,13 @@ package kguscenariobuilderserver.dto.layer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import kguscenariobuilderserver.entity.layer.Layer1;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@Builder
 public class Layer1DTO {
     @JsonProperty("도로 기능과 등급")
     private String 도로_기능과_등급;
@@ -39,16 +39,16 @@ public class Layer1DTO {
     private String 도로유형;
 
     public static Layer1DTO toDTO(Layer1 layer1){
-        return new Layer1DTO(
-                layer1.get도로_기능과_등급(),
-                layer1.get차로폭(),
-                layer1.get갓길폭(),
-                layer1.get도로선형(),
-                layer1.get도로경사(),
-                layer1.get차로수(),
-                layer1.get도로포장(),
-                layer1.get노면상태(),
-                layer1.get도로유형()
-        );
+        return Layer1DTO.builder()
+                .도로_기능과_등급(layer1.get도로_기능과_등급())
+                .차로폭(layer1.get차로폭())
+                .갓길폭(layer1.get갓길폭())
+                .도로선형(layer1.get도로선형())
+                .도로경사(layer1.get도로경사())
+                .차로수(layer1.get차로수())
+                .도로포장(layer1.get도로포장())
+                .노면상태(layer1.get노면상태())
+                .도로유형(layer1.get도로유형())
+                .build();
     }
 }

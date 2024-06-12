@@ -2,13 +2,13 @@ package kguscenariobuilderserver.dto.layer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import kguscenariobuilderserver.entity.layer.Layer6;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@Builder
 public class Layer6DTO {
     private String Camera센서;
     private String Radar센서;
@@ -23,17 +23,17 @@ public class Layer6DTO {
     private String 전자지도정보;
 
     public static Layer6DTO toDTO(Layer6 layer6){
-        return new Layer6DTO(
-                layer6.getCamera센서(),
-                layer6.getRadar센서(),
-                layer6.getLiDAR센서(),
-                layer6.getV2I(),
-                layer6.getV2V(),
-                layer6.getV2P(),
-                layer6.getV2N(),
-                layer6.getV2C(),
-                layer6.getGPS정보(),
-                layer6.get전자지도정보()
-        );
+        return Layer6DTO.builder()
+                .Camera센서(layer6.getCamera센서())
+                .Radar센서(layer6.getRadar센서())
+                .LiDAR센서(layer6.getLiDAR센서())
+                .V2I(layer6.getV2I())
+                .V2V(layer6.getV2V())
+                .V2P(layer6.getV2P())
+                .V2N(layer6.getV2N())
+                .V2C(layer6.getV2C())
+                .GPS정보(layer6.getGPS정보())
+                .전자지도정보(layer6.get전자지도정보())
+                .build();
     }
 }

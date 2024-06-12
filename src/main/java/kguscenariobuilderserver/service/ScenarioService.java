@@ -1,9 +1,7 @@
 package kguscenariobuilderserver.service;
 
 import kguscenariobuilderserver.dto.InsertScenario;
-import kguscenariobuilderserver.dto.SaveScenariosResult;
 import kguscenariobuilderserver.dto.ScenarioDTO;
-import kguscenariobuilderserver.entity.Scenario;
 import kguscenariobuilderserver.exception.InsertScenarioException;
 import kguscenariobuilderserver.repository.ScenarioDAO;
 import kguscenariobuilderserver.repository.ScenarioRepository;
@@ -36,10 +34,6 @@ public class ScenarioService {
 
     public List<ScenarioDTO> readScenarioDTOs(){
         return scenarioRepository.findAllToDTO();
-    }
-
-    public List<Scenario> readScenarios(){
-        return scenarioRepository.findAll();
     }
 
 
