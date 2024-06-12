@@ -19,23 +19,13 @@ public class ScenarioService {
     private final ScenarioRepository scenarioRepository;
     public String saveScenarios(InsertScenario insertScenario){
         int scenarioSize = validateScenarioSize(insertScenario);
-        Long maxId = scenarioDAO.maxId();
-        scenarioDAO.insertLayer1(insertScenario.getLayer1DTOs(), maxId);
-        scenarioDAO.insertLayer2(insertScenario.getLayer2DTOs(), maxId);
-        scenarioDAO.insertLayer3(insertScenario.getLayer3DTOs(), maxId);
-        scenarioDAO.insertLayer4(insertScenario.getLayer4DTOs(), maxId);
-        scenarioDAO.insertLayer5(insertScenario.getLayer5DTOs(), maxId);
-        scenarioDAO.insertLayer6(insertScenario.getLayer6DTOs(), maxId);
-        scenarioDAO.insertLayer7(insertScenario.getLayer7DTOs(), maxId);
-        scenarioDAO.insertScenario(scenarioSize, maxId);
-
+        scenarioDAO.batchInsertScenarios(scenarioSize, insertScenario);
         return scenarioSize + "개 시나리오 저장 성공 !";
     }
 
     public List<ScenarioDTO> readScenarioDTOs(){
         return scenarioRepository.findAllToDTO();
     }
-
 
     public int validateScenarioSize(InsertScenario insertScenario) {
         int size = insertScenario.getLayer1DTOs().size();

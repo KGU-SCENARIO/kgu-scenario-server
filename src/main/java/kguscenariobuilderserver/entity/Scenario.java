@@ -17,7 +17,7 @@ public class Scenario {
     //인덱스 번호
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "scenario_num")
+    @Column(name = "scenario_id")
     private Long id;
 
     @OneToOne
