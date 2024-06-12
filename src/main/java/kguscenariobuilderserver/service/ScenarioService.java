@@ -7,6 +7,7 @@ import kguscenariobuilderserver.repository.ScenarioDAO;
 import kguscenariobuilderserver.repository.ScenarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -16,13 +17,17 @@ import java.util.List;
 public class ScenarioService {
 
     private final ScenarioDAO scenarioDAO;
+
     private final ScenarioRepository scenarioRepository;
+
+    @Transactional
     public String saveScenarios(InsertScenario insertScenario){
         int scenarioSize = validateScenarioSize(insertScenario);
         scenarioDAO.batchInsertScenarios(scenarioSize, insertScenario);
         return scenarioSize + "개 시나리오 저장 성공 !";
     }
 
+    @Transactional(readOnly = true)
     public List<ScenarioDTO> readScenarioDTOs(){
         return scenarioRepository.findAllToDTO();
     }
