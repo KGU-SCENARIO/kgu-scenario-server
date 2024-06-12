@@ -14,16 +14,12 @@ public class Layer1DTO {
     @JsonProperty("도로 기능과 등급")
     private String 도로_기능과_등급;
 
-    @JsonProperty("차로폭")
     private String 차로폭;
 
-    @JsonProperty("갓길폭")
     private String 갓길폭;
 
-    @JsonProperty("도로선형")
     private String 도로선형;
 
-    @JsonProperty("도로경사")
     private String 도로경사;
 
     @JsonProperty("차로 수")
@@ -35,7 +31,6 @@ public class Layer1DTO {
     @JsonProperty("노면 상태")
     private String 노면상태;
 
-    @JsonProperty("도로유형")
     private String 도로유형;
 
     public static Layer1DTO toDTO(Layer1 layer1){

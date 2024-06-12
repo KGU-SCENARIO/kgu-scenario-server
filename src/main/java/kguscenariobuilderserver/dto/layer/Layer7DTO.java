@@ -1,6 +1,5 @@
 package kguscenariobuilderserver.dto.layer;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import kguscenariobuilderserver.entity.layer.Layer7;
 import lombok.*;
 
@@ -10,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Layer7DTO {
-    @JsonProperty("-")
     private String 법ㆍ규제;
 
     public static Layer7DTO toDTO(Layer7 layer7){
