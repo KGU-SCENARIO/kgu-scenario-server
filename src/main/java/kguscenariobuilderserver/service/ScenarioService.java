@@ -6,11 +6,13 @@ import kguscenariobuilderserver.exception.InsertScenarioException;
 import kguscenariobuilderserver.repository.ScenarioDAO;
 import kguscenariobuilderserver.repository.ScenarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Pageable;
 
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +22,8 @@ public class ScenarioService {
 
     private final ScenarioRepository scenarioRepository;
 
+    @Value("${page.size}") private int PAGE_SIZE;
+
     @Transactional
     public String saveScenarios(InsertScenario insertScenario){
         int scenarioSize = validateScenarioSize(insertScenario);
@@ -28,8 +32,9 @@ public class ScenarioService {
     }
 
     @Transactional(readOnly = true)
-    public List<ScenarioDTO> readScenarioDTOs(){
-        return scenarioRepository.findAllToDTO();
+    public Page<ScenarioDTO> readScenarioDTOs(int pageNo){
+        Pageable pageable = PageRequest.of(pageNo,PAGE_SIZE);
+        return scenarioRepository.findAllToDTO(pageable);
     }
 
     public int validateScenarioSize(InsertScenario insertScenario) {

@@ -134,6 +134,7 @@ public class Layer4DTO {
         }
 
         return Layer4DTO.builder()
+                .npc1_객체종류(layer4.getNPC1().get객체종류())
                 .npc1_객체위치_차로(layer4.getNPC1().get객체위치_차로())
                 .npc1_객체위치_상대거리(layer4.getNPC1().get객체위치_상대거리())
                 .npc1_객체속도(layer4.getNPC1().get객체속도())
