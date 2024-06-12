@@ -1,4 +1,4 @@
-package com.example.kguscenarioserver;
+package kguscenariobuilderserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
