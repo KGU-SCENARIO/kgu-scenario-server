@@ -143,6 +143,7 @@ public class Layer4DTO {
                 .npc1_객체행동_시작(layer4.getNPC1().get객체행동_시작())
                 .npc1_객체행동_동작(layer4.getNPC1().get객체행동_동작())
                 .npc1_Trigger_동작(layer4.getNPC1().getTrigger_동작())
+
                 .npc2_객체종류(layer4.getNPC2().get객체종류())
                 .npc2_객체위치_차로(layer4.getNPC2().get객체위치_차로())
                 .npc2_객체위치_상대거리(layer4.getNPC2().get객체위치_상대거리())
@@ -152,6 +153,7 @@ public class Layer4DTO {
                 .npc2_객체행동_시작(layer4.getNPC2().get객체행동_시작())
                 .npc2_객체행동_동작(layer4.getNPC2().get객체행동_동작())
                 .npc2_Trigger_동작(layer4.getNPC2().getTrigger_동작())
+
                 .npc3_객체종류(layer4.getNPC3().get객체종류())
                 .npc3_객체위치_차로(layer4.getNPC3().get객체위치_차로())
                 .npc3_객체위치_상대거리(layer4.getNPC3().get객체위치_상대거리())
@@ -161,6 +163,7 @@ public class Layer4DTO {
                 .npc3_객체행동_시작(layer4.getNPC3().get객체행동_시작())
                 .npc3_객체행동_동작(layer4.getNPC3().get객체행동_동작())
                 .npc3_Trigger_동작(layer4.getNPC3().getTrigger_동작())
+
                 .npc4_객체종류(layer4.getNPC4().get객체종류())
                 .npc4_객체위치_차로(layer4.getNPC4().get객체위치_차로())
                 .npc4_객체위치_상대거리(layer4.getNPC4().get객체위치_상대거리())
@@ -170,6 +173,7 @@ public class Layer4DTO {
                 .npc4_객체행동_시작(layer4.getNPC4().get객체행동_시작())
                 .npc4_객체행동_동작(layer4.getNPC4().get객체행동_동작())
                 .npc4_Trigger_동작(layer4.getNPC4().getTrigger_동작())
+
                 .자율주행차_객체종류(layer4.get자율주행차().get자율주행차_객체종류())
                 .자율주행차_객체위치_차로(layer4.get자율주행차().get자율주행차_객체위치_차로())
                 .자율주행차_객체속도(layer4.get자율주행차().get자율주행차_객체속도())
