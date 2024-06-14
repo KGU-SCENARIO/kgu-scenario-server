@@ -17,7 +17,7 @@ public class ScenarioDTO {
     private Layer5DTO layer5DTO;
     private Layer6DTO layer6DTO;
     private Layer7DTO layer7DTO;
-
+    private String tc_description;
     public ScenarioDTO(Scenario scenario){
         this.layer1DTO = Layer1DTO.toDTO(scenario.getLayer1());
         this.layer2DTO = Layer2DTO.toDTO(scenario.getLayer2());
@@ -26,6 +26,6 @@ public class ScenarioDTO {
         this.layer5DTO = Layer5DTO.toDTO(scenario.getLayer5());
         this.layer6DTO = Layer6DTO.toDTO(scenario.getLayer6());
         this.layer7DTO = Layer7DTO.toDTO(scenario.getLayer7());
-    };
-
+        this.tc_description = scenario.getTc_description();
+    }
 }
