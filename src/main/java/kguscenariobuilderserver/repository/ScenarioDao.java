@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -94,13 +95,14 @@ public class ScenarioDAO {
     }
 
     private void insertScenario(int scenarioSize, Long maxId) {
-        String sql = "insert into Scenario (scenario_id, layer1_id, layer2_id, layer3_id, layer4_id, layer5_id, layer6_id, layer7_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Scenario (scenario_id, layer1_id, layer2_id, layer3_id, layer4_id, layer5_id, layer6_id, layer7_id, tc_create_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         executeBatchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 long id = maxId + (long) i + 1;
                 for (int j = 1; j <= 8; j++) {
                     ps.setLong(j, id);
                 }
+                ps.setTimestamp(9,new Timestamp(System.currentTimeMillis()));
             }
             public int getBatchSize() {
                 return scenarioSize;

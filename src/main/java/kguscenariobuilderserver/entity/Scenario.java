@@ -3,15 +3,15 @@ package kguscenariobuilderserver.entity;
 import jakarta.persistence.*;
 import kguscenariobuilderserver.entity.layer.*;
 import kguscenariobuilderserver.entity.layer.layer4.Layer4;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
+
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Scenario {
     //인덱스 번호
@@ -20,25 +20,36 @@ public class Scenario {
     @Column(name = "scenario_id")
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer1_id")
     private Layer1 layer1;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer2_id")
     private Layer2 layer2;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer3_id")
     private Layer3 layer3;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer4_id")
     private Layer4 layer4;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer5_id")
     private Layer5 layer5;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer6_id")
     private Layer6 layer6;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "layer7_id")
     private Layer7 layer7;
+
+    private String tc_description;
+
+    private Timestamp tc_create_at;
+
 }
