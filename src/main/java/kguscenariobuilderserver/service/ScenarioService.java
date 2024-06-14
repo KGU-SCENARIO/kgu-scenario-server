@@ -37,6 +37,12 @@ public class ScenarioService {
         return scenarioRepository.findAllToDTO(pageable);
     }
 
+    @Transactional
+    public String deleteScenarios(){
+        scenarioRepository.deleteAll();
+        return "삭제 완료";
+    }
+
     public int validateScenarioSize(InsertScenario insertScenario) {
         int size = insertScenario.getLayer1DTOs().size();
 
