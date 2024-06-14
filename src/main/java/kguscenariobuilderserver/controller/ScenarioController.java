@@ -7,23 +7,28 @@ import org.springframework.web.bind.annotation.*;
 
 import farmeasy.server.dto.response.Response;
 
-import java.awt.print.Pageable;
-
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/scenarios")
 public class ScenarioController {
 
     private final ScenarioService scenarioService;
 
-    @GetMapping("/scenarios")
+    @GetMapping
     public Response readScenarios(@RequestParam(required = false, defaultValue = "0",value = "page") int pageNo){
         return Response.success(scenarioService.readScenarioDTOs(pageNo));
     }
 
-    @PostMapping("/scenarios")
+    @PostMapping
     public Response insertScenarios(@RequestBody InsertScenario insertScenario){
         return Response.success(scenarioService.saveScenarios(insertScenario));
+    }
+
+
+    @DeleteMapping
+    public Response deleteScenarios(){
+        return Response.success(scenarioService.deleteScenarios());
     }
 
 }
