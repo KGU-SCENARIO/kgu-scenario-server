@@ -27,7 +27,7 @@ public class ScenarioService {
     @Transactional
     public String saveScenarios(InsertScenario insertScenario){
         int scenarioSize = validateScenarioSize(insertScenario);
-        scenarioDAO.batchInsertScenarios(scenarioSize, insertScenario);
+        scenarioDAO.batchInsertScenarios(insertScenario);
         return scenarioSize + "개 시나리오 저장 성공 !";
     }
 

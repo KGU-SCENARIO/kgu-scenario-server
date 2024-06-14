@@ -16,4 +16,5 @@ public class InsertScenario {
     private List<Layer5DTO> layer5DTOs;
     private List<Layer6DTO> layer6DTOs;
     private List<Layer7DTO> layer7DTOs;
+    private List<String> tc_description;
 }

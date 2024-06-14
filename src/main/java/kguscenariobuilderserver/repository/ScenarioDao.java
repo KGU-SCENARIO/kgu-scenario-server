@@ -18,7 +18,7 @@ import java.util.List;
 public class ScenarioDAO {
     private final JdbcTemplate jdbcTemplate;
 
-    public void batchInsertScenarios(int scenarioSize, InsertScenario insertScenario) {
+    public void batchInsertScenarios(InsertScenario insertScenario) {
         Long maxId = maxId();
         insertLayer1(insertScenario.getLayer1DTOs(), maxId);
         insertLayer2(insertScenario.getLayer2DTOs(), maxId);
@@ -27,7 +27,7 @@ public class ScenarioDAO {
         insertLayer5(insertScenario.getLayer5DTOs(), maxId);
         insertLayer6(insertScenario.getLayer6DTOs(), maxId);
         insertLayer7(insertScenario.getLayer7DTOs(), maxId);
-        insertScenario(scenarioSize, maxId);
+        insertScenario(insertScenario.getTc_description(), maxId);
     }
 
     private void executeBatchInsert(String sql, BatchPreparedStatementSetter pss) {
@@ -94,18 +94,19 @@ public class ScenarioDAO {
         });
     }
 
-    private void insertScenario(int scenarioSize, Long maxId) {
-        String sql = "insert into Scenario (scenario_id, layer1_id, layer2_id, layer3_id, layer4_id, layer5_id, layer6_id, layer7_id, tc_create_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private void insertScenario(List<String> tc_description, Long maxId) {
+        String sql = "insert into Scenario (scenario_id, layer1_id, layer2_id, layer3_id, layer4_id, layer5_id, layer6_id, layer7_id, tc_description, tc_create_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         executeBatchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 long id = maxId + (long) i + 1;
                 for (int j = 1; j <= 8; j++) {
                     ps.setLong(j, id);
                 }
-                ps.setTimestamp(9,new Timestamp(System.currentTimeMillis()));
+                ps.setString(9,tc_description.get(i));
+                ps.setTimestamp(10,new Timestamp(System.currentTimeMillis()));
             }
             public int getBatchSize() {
-                return scenarioSize;
+                return tc_description.size();
             }
         });
     }
