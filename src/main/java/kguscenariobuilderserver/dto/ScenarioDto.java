@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ScenarioDTO {
+    private Long id;
     private Layer1DTO layer1DTO;
     private Layer2DTO layer2DTO;
     private Layer3DTO layer3DTO;
@@ -19,6 +20,7 @@ public class ScenarioDTO {
     private Layer7DTO layer7DTO;
     private String tc_description;
     public ScenarioDTO(Scenario scenario){
+        this.id = scenario.getId();
         this.layer1DTO = Layer1DTO.toDTO(scenario.getLayer1());
         this.layer2DTO = Layer2DTO.toDTO(scenario.getLayer2());
         this.layer3DTO = Layer3DTO.toDTO(scenario.getLayer3());
