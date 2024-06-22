@@ -26,9 +26,9 @@ public class ScenarioService {
 
     @Transactional
     public String saveScenarios(InsertScenario insertScenario){
-        int scenarioSize = validateScenarioSize(insertScenario);
-        scenarioDAO.batchInsertScenarios(insertScenario);
-        return scenarioSize + "개 시나리오 저장 성공 !";
+        validateScenarioSize(insertScenario);
+        int size = scenarioDAO.batchInsertScenarios(insertScenario);
+        return size + "개 시나리오 저장 성공 !";
     }
 
     @Transactional(readOnly = true)
@@ -43,17 +43,17 @@ public class ScenarioService {
         return "삭제 완료";
     }
 
-    public int validateScenarioSize(InsertScenario insertScenario) {
+    public void validateScenarioSize(InsertScenario insertScenario) {
         int size = insertScenario.getLayer1DTOs().size();
 
-        if (!(size != insertScenario.getLayer2DTOs().size() ||
+        if (size != insertScenario.getLayer2DTOs().size() ||
                 size != insertScenario.getLayer3DTOs().size() ||
                 size != insertScenario.getLayer4DTOs().size() ||
                 size != insertScenario.getLayer5DTOs().size() ||
                 size != insertScenario.getLayer6DTOs().size() ||
-                size != insertScenario.getLayer7DTOs().size())) return size;
-        else {
+                size != insertScenario.getLayer7DTOs().size()) {
             throw new InsertScenarioException("각 레이어의 크기가 일치하지 않습니다.");
         }
     }
+
 }
