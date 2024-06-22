@@ -56,20 +56,6 @@ public class ValidationService {
         return true;
     }
 
-    private boolean isSpeedInRange(String speed){
-        int realSpeed = Integer.parseInt(extractBeforeDelimiter(speed,"~"));
-        return realSpeed >= 40;
-    }
-
-    private boolean isValidAcceleration(String acceleration){
-        int realSpeed = Integer.parseInt(extractBeforeDelimiter(acceleration,"~"));
-        return realSpeed > 10 || realSpeed < -10;
-    }
-
-    private boolean isInvalidNpc(String type, String speed, String acceleration) {
-        return "보행자".equals(type) && (isSpeedInRange(speed) || isValidAcceleration(acceleration));
-    }
-
     public boolean isValidLayer4(Layer4DTO layer4DTO) {
         if (isInvalidNpc(layer4DTO.getNpc1_객체종류(), layer4DTO.getNpc1_객체속도(), layer4DTO.getNpc1_객체가감속도()) ||
                 isInvalidNpc(layer4DTO.getNpc2_객체종류(), layer4DTO.getNpc2_객체속도(), layer4DTO.getNpc2_객체가감속도()) ||
@@ -101,17 +87,6 @@ public class ValidationService {
         }
 
         return true;
-    }
-
-    private boolean hasDuplicatePosition(int[] lanes, String[] distances) {
-        for (int i = 0; i < lanes.length; i++) {
-            for (int j = i + 1; j < lanes.length; j++) {
-                if (lanes[i] == lanes[j] && distances[i].equals(distances[j])) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     public boolean isValidLayer5(Layer5DTO layer5DTO) {
@@ -217,10 +192,6 @@ public class ValidationService {
         return true;
     }
 
-    private boolean isMaxSpeed(String speed){
-        int realSpeed = Integer.parseInt(extractBeforeDelimiter(speed,"~"));
-        return realSpeed < 70;
-    }
     public boolean isValidLayer2WithLayer4(Layer2DTO layer2DTO, Layer4DTO layer4DTO){
         String speed1 = layer4DTO.getNpc1_객체속도();
         String speed2 = layer4DTO.getNpc2_객체속도();
@@ -245,35 +216,21 @@ public class ValidationService {
             return false;
         }
 
-        String npc1_Trigger_동작 = layer4DTO.getNpc1_Trigger_동작();
-        String npc2_Trigger_동작 = layer4DTO.getNpc2_Trigger_동작();
-        String npc3_Trigger_동작 = layer4DTO.getNpc3_Trigger_동작();
-        String npc4_Trigger_동작 = layer4DTO.getNpc4_Trigger_동작();
-
-        String npc1_객체행동_동작 = layer4DTO.getNpc1_객체행동_동작();
-        String npc2_객체행동_동작 = layer4DTO.getNpc2_객체행동_동작();
-        String npc3_객체행동_동작 = layer4DTO.getNpc3_객체행동_동작();
-        String npc4_객체행동_동작 = layer4DTO.getNpc4_객체행동_동작();
-        String 자율주행차_객체예상행동_동작 = layer4DTO.get자율주행차_객체예상행동_동작();
-
         if("연속류 도로".equals(도로유형)){
-
-            if("시뮬레이션 시간".equals(npc1_Trigger_동작) || npc1_Trigger_동작.startsWith("Headway")
-            || "시뮬레이션 시간".equals(npc2_Trigger_동작) || npc2_Trigger_동작.startsWith("Headway")
-            || "시뮬레이션 시간".equals(npc3_Trigger_동작) || npc3_Trigger_동작.startsWith("Headway")
-            || "시뮬레이션 시간".equals(npc4_Trigger_동작) || npc4_Trigger_동작.startsWith("Headway")){
-                return false;
-            }
-
-            if("좌회전(진입)".equals(npc1_객체행동_동작) || "우회전(진출)".equals(npc1_객체행동_동작) || "유턴".equals(npc1_객체행동_동작)
-            ||"좌회전(진입)".equals(npc2_객체행동_동작) || "우회전(진출)".equals(npc2_객체행동_동작) || "유턴".equals(npc2_객체행동_동작)
-            ||"좌회전(진입)".equals(npc3_객체행동_동작) || "우회전(진출)".equals(npc3_객체행동_동작) || "유턴".equals(npc3_객체행동_동작)
-            ||"좌회전(진입)".equals(npc4_객체행동_동작) || "우회전(진출)".equals(npc4_객체행동_동작) || "유턴".equals(npc4_객체행동_동작)
-            ||"좌회전(진입)".equals(자율주행차_객체예상행동_동작) || "우회전(진출)".equals(자율주행차_객체예상행동_동작) || "유턴".equals(자율주행차_객체예상행동_동작)){
+            if (containsTriggerOrAction(layer4DTO.getNpc1_Trigger_동작(), layer4DTO.getNpc1_객체행동_동작()) ||
+                    containsTriggerOrAction(layer4DTO.getNpc2_Trigger_동작(), layer4DTO.getNpc2_객체행동_동작()) ||
+                    containsTriggerOrAction(layer4DTO.getNpc3_Trigger_동작(), layer4DTO.getNpc3_객체행동_동작()) ||
+                    containsTriggerOrAction(layer4DTO.getNpc4_Trigger_동작(), layer4DTO.getNpc4_객체행동_동작()) ||
+                    containsTriggerOrAction(" ", layer4DTO.get자율주행차_객체예상행동_동작())) {
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean containsTriggerOrAction(String trigger, String action) {
+        return ("시뮬레이션 시간".equals(trigger) || trigger.startsWith("Headway") || trigger.equals(" ")) &&
+                (action.equals("좌회전(진입)") || action.equals("우회전(진출)") || action.equals("유턴"));
     }
 
     private boolean checkNpcPositions(Layer4DTO layer4DTO, int n) {
@@ -290,5 +247,35 @@ public class ValidationService {
             return input.substring(0, delimiterIndex).trim();
         }
         return input.trim();
+    }
+
+    private boolean isMaxSpeed(String speed){
+        int realSpeed = Integer.parseInt(extractBeforeDelimiter(speed,"~"));
+        return realSpeed < 70;
+    }
+
+    private boolean hasDuplicatePosition(int[] lanes, String[] distances) {
+        for (int i = 0; i < lanes.length; i++) {
+            for (int j = i + 1; j < lanes.length; j++) {
+                if (lanes[i] == lanes[j] && distances[i].equals(distances[j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isSpeedInRange(String speed){
+        int realSpeed = Integer.parseInt(extractBeforeDelimiter(speed,"~"));
+        return realSpeed >= 40;
+    }
+
+    private boolean isValidAcceleration(String acceleration){
+        int realSpeed = Integer.parseInt(extractBeforeDelimiter(acceleration,"~"));
+        return realSpeed > 10 || realSpeed < -10;
+    }
+
+    private boolean isInvalidNpc(String type, String speed, String acceleration) {
+        return "보행자".equals(type) && (isSpeedInRange(speed) || isValidAcceleration(acceleration));
     }
 }
