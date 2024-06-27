@@ -24,21 +24,16 @@ public class ScenarioDAO {
     private final JdbcTemplate jdbcTemplate;
     private final ValidationService validationService;
 
-    public int batchInsertScenarios(InsertScenario insertScenario) {
+    public void batchInsertScenarios(InsertScenario insertScenario) {
         Long maxId = findMaxTcId();
 
         List<Integer> invalidIndexes = IntStream.range(0, insertScenario.getLayer1DTOs().size())
                 .parallel()
                 .filter(i -> !validationService.isValidLayer1(insertScenario.getLayer1DTOs().get(i))
                         || !validationService.isValidLayer2(insertScenario.getLayer2DTOs().get(i))
+                        || !validationService.isValidLayer3(insertScenario.getLayer3DTOs().get(i))
                         || !validationService.isValidLayer4(insertScenario.getLayer4DTOs().get(i))
-                        || !validationService.isValidLayer5(insertScenario.getLayer5DTOs().get(i))
-                        || !validationService.isValidLayer1WithLayer2(insertScenario.getLayer1DTOs().get(i),insertScenario.getLayer2DTOs().get(i))
-                        || !validationService.isValidLayer1WithLayer5(insertScenario.getLayer1DTOs().get(i),insertScenario.getLayer5DTOs().get(i))
-                        || !validationService.isValidLayer2WithLayer5(insertScenario.getLayer2DTOs().get(i),insertScenario.getLayer5DTOs().get(i))
-                        || !validationService.isValidLayer2WithLayer4(insertScenario.getLayer2DTOs().get(i),insertScenario.getLayer4DTOs().get(i))
-                        || !validationService.isValidLayer1WithLayer4(insertScenario.getLayer1DTOs().get(i),insertScenario.getLayer4DTOs().get(i))
-                        )
+                        || !validationService.isValidLayer5(insertScenario.getLayer5DTOs().get(i)))
                 .boxed()
                 .collect(Collectors.toList());
 
@@ -50,8 +45,6 @@ public class ScenarioDAO {
         removeInvalidIndexes(insertScenario.getLayer6DTOs(), invalidIndexes);
         removeInvalidIndexes(insertScenario.getLayer7DTOs(), invalidIndexes);
 
-        int size = insertScenario.getLayer1DTOs().size();
-
         insertLayer1(insertScenario.getLayer1DTOs(), maxId);
         insertLayer2(insertScenario.getLayer2DTOs(), maxId);
         insertLayer3(insertScenario.getLayer3DTOs(), maxId);
@@ -59,9 +52,7 @@ public class ScenarioDAO {
         insertLayer5(insertScenario.getLayer5DTOs(), maxId);
         insertLayer6(insertScenario.getLayer6DTOs(), maxId);
         insertLayer7(insertScenario.getLayer7DTOs(), maxId);
-        insertScenario(insertScenario.getTc_description(), maxId, size);
-
-        return size;
+        insertScenario(insertScenario.getTc_description(), maxId, insertScenario.getLayer1DTOs().size());
     }
 
     private <T> void removeInvalidIndexes(List<T> list, List<Integer> invalidIndexes) {

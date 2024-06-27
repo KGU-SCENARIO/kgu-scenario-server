@@ -10,7 +10,7 @@ public class Layer6 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "layer6")
+    @OneToOne(mappedBy = "layer6",fetch = FetchType.LAZY)
     private Scenario scenario;
 
     private String Camera센서;
