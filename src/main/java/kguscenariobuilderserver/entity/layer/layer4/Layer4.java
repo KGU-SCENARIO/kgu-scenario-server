@@ -12,7 +12,7 @@ public class Layer4 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "layer4",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "layer4")
     private Scenario scenario;
 
     @Embedded

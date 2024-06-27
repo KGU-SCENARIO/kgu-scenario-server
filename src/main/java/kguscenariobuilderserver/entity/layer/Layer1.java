@@ -10,7 +10,7 @@ public class Layer1 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "layer1",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "layer1")
     private Scenario scenario;
     private String 도로_기능과_등급;
     private String 차로폭;
