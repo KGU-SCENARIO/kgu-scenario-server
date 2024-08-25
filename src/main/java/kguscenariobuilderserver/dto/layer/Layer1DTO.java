@@ -12,38 +12,43 @@ import lombok.Setter;
 @Builder
 public class Layer1DTO {
     @JsonProperty("도로 기능과 등급")
-    private String 도로_기능과_등급;
+    private String road_function_and_Grade;
 
-    private String 차로폭;
+    @JsonProperty("차로폭")
+    private String lane_width;
 
-    private String 갓길폭;
+    @JsonProperty("갓길폭")
+    private String shoulder_width;
 
-    private String 도로선형;
+    @JsonProperty("도로선형")
+    private String road_alignment;
 
-    private String 도로경사;
+    @JsonProperty("도로경사")
+    private String road_gradient;
 
     @JsonProperty("차로 수")
-    private String 차로수;
+    private String number_of_lanes;
 
     @JsonProperty("도로 포장")
-    private String 도로포장;
+    private String road_surface;
 
     @JsonProperty("노면 상태")
-    private String 노면상태;
+    private String pavement_condition;
 
-    private String 도로유형;
+    @JsonProperty("도로유형")
+    private String road_type;
 
     public static Layer1DTO toDTO(Layer1 layer1){
         return Layer1DTO.builder()
-                .도로_기능과_등급(layer1.get도로_기능과_등급())
-                .차로폭(layer1.get차로폭())
-                .갓길폭(layer1.get갓길폭())
-                .도로선형(layer1.get도로선형())
-                .도로경사(layer1.get도로경사())
-                .차로수(layer1.get차로수())
-                .도로포장(layer1.get도로포장())
-                .노면상태(layer1.get노면상태())
-                .도로유형(layer1.get도로유형())
+                .road_function_and_Grade(layer1.getRoad_function_and_Grade())
+                .lane_width(layer1.getLane_width())
+                .shoulder_width(layer1.getShoulder_width())
+                .road_alignment(layer1.getRoad_alignment())
+                .road_gradient(layer1.getRoad_gradient())
+                .number_of_lanes(layer1.getNumber_of_lanes())
+                .road_surface(layer1.getRoad_surface())
+                .pavement_condition(layer1.getPavement_condition())
+                .road_type(layer1.getRoad_type())
                 .build();
     }
 }

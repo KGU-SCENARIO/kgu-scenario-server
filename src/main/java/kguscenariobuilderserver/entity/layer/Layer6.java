@@ -12,15 +12,14 @@ public class Layer6 {
     private Long id;
     @OneToOne(mappedBy = "layer6")
     private Scenario scenario;
-
-    private String Camera센서;
-    private String Radar센서;
-    private String LiDAR센서;
-    private String V2I;
-    private String V2V;
-    private String V2P;
-    private String V2N;
-    private String V2C;
-    private String GPS정보;
-    private String 전자지도정보;
+    private String camera_sensor;
+    private String radar_sensor;
+    private String lidar_sensor;
+    private String v2i_communication;
+    private String v2v_communication;
+    private String v2p_communication;
+    private String v2n_communication;
+    private String v2c_communication;
+    private String gps_information;
+    private String electronic_map_information;
 }

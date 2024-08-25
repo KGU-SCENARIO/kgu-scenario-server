@@ -12,14 +12,14 @@ public class Layer1 {
     private Long id;
     @OneToOne(mappedBy = "layer1")
     private Scenario scenario;
-    private String 도로_기능과_등급;
-    private String 차로폭;
-    private String 갓길폭;
-    private String 도로선형;
-    private String 도로경사;
-    private String 차로수;
-    private String 도로포장;
-    private String 노면상태;
-    private String 도로유형;
+    private String road_function_and_Grade;
+    private String lane_width;
+    private String shoulder_width;
+    private String road_alignment;
+    private String road_gradient;
+    private String number_of_lanes;
+    private String road_surface;
+    private String pavement_condition;
+    private String road_type;
 
 }

@@ -12,6 +12,5 @@ public class Layer7 {
     private Long id;
     @OneToOne(mappedBy = "layer7")
     private Scenario scenario;
-
-    private String 법ㆍ규제;
+    private String law_regulation;
 }

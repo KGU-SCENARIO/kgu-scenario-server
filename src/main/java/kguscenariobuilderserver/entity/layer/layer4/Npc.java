@@ -8,14 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Npc {
-    private String 객체종류;
-    private int 객체위치_차로;
-    private String 객체위치_상대거리;
-    private String 객체속도;
-    private String 객체가감속도;
-    private String Trigger_가감속;
-    private String 객체행동_시작;
-    private String 객체행동_동작;
-    private String Trigger_동작;
+    private String type;
+    private int position_lane;
+    private String relative_distance;
+    private String speed;
+    private String acceleration;
+    private String trigger_acceleration;
+    private String action_start;
+    private String action_perform;
+    private String trigger_action;
 
 }

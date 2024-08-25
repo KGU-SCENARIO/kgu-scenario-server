@@ -93,46 +93,46 @@ public class ScenarioDAO {
     }
 
     private void insertLayer1(final List<Layer1DTO> layer1DTOs, Long maxId) {
-        String sql = "insert into Layer1 (id, 도로_기능과_등급, 차로폭, 갓길폭, 도로선형, 도로경사, 차로수, 도로포장, 노면상태, 도로유형) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer1 (id, road_function_and_Grade, lane_width, shoulder_width, road_alignment, road_gradient, number_of_lanes, road_surface, pavement_condition, road_type) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         insertLayer(sql, layer1DTOs, maxId);
     }
 
     private void insertLayer2(final List<Layer2DTO> layer2DTOs, Long maxId) {
-        String sql = "insert into Layer2 (id, 중앙분리대, 방호울타리, 충격흡수시설, 연속조명, 국부조명, 과속방지턱, 차량신호, 도로상태예고, 노면상황예고, 기상상황예고, 기타주의예고, 통행금지, 통행제한, 금지사항, 도로지정, 통행방법, 중앙선, 차선, 사전예고표시, 안전속도표시, 금지구역표시, 최고제한속도, 최저제한속도, 보호구역, 전용도로) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer2 (id, median_barrier, guardrail, impact_absorbing_facility, continuous_lighting, local_lighting, speed_bump, vehicle_signal, road_condition_alert, pavement_condition_alert, weather_condition_alert, other_warning_alerts, no_entry, restricted_access, prohibited_items, road_designation, traffic_method, center_line, lane_line, advance_warning_sign, safe_speed_sign, no_access_sign, maximum_speed_limit, minimum_speed_limit, protected_zone, exclusive_road) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         insertLayer(sql, layer2DTOs, maxId);
     }
 
     private void insertLayer3(final List<Layer3DTO> layer3DTOs, Long maxId) {
-        String sql = "insert into Layer3 (id, 도로공사, 선행사고, 장애물) values (?, ?, ?, ?)";
+        String sql = "insert into Layer3 (id, road_construction, previous_accident, obstacle) values (?, ?, ?, ?)";
         insertLayer(sql, layer3DTOs, maxId);
     }
 
     private void insertLayer4(final List<Layer4DTO> layer4DTOS, Long maxId) {
-        String sql = "insert into Layer4 (id, NPC1_객체종류, NPC1_객체위치_차로, NPC1_객체위치_상대거리, NPC1_객체속도, NPC1_객체가감속도, NPC1_Trigger_가감속, NPC1_객체행동_시작, NPC1_객체행동_동작, NPC1_Trigger_동작," +
-                "NPC2_객체종류, NPC2_객체위치_차로, NPC2_객체위치_상대거리, NPC2_객체속도, NPC2_객체가감속도, NPC2_Trigger_가감속, NPC2_객체행동_시작, NPC2_객체행동_동작, NPC2_Trigger_동작," +
-                "NPC3_객체종류, NPC3_객체위치_차로, NPC3_객체위치_상대거리, NPC3_객체속도, NPC3_객체가감속도, NPC3_Trigger_가감속, NPC3_객체행동_시작, NPC3_객체행동_동작, NPC3_Trigger_동작," +
-                "NPC4_객체종류, NPC4_객체위치_차로, NPC4_객체위치_상대거리, NPC4_객체속도, NPC4_객체가감속도, NPC4_Trigger_가감속, NPC4_객체행동_시작, NPC4_객체행동_동작, NPC4_Trigger_동작," +
-                "교통상황_LOS, 자율주행차_객체종류, 자율주행차_객체위치_차로, 자율주행차_객체속도, 자율주행차_객체행동_시작, 자율주행차_객체예상행동_동작) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer4 (id, npc1_type, npc1_position_lane, npc1_relative_distance, npc1_speed, npc1_acceleration, npc1_trigger_acceleration, npc1_action_start, npc1_action_perform, npc1_trigger_action," +
+                "npc2_type, npc2_position_lane, npc2_relative_distance, npc2_speed, npc2_acceleration, npc2_trigger_acceleration, npc2_action_start, npc2_action_perform, npc2_trigger_action," +
+                "npc3_type, npc3_position_lane, npc3_relative_distance, npc3_speed, npc3_acceleration, npc3_trigger_acceleration, npc3_action_start, npc3_action_perform, npc3_trigger_action," +
+                "npc4_type, npc4_position_lane, npc4_relative_distance, npc4_speed, npc4_acceleration, npc4_trigger_acceleration, npc4_action_start, npc4_action_perform, npc4_trigger_action," +
+                "traffic_condition_LOS, av_type, av_lane_position, av_speed, av_action_start, av_action_perform) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         insertLayer(sql, layer4DTOS, maxId);
     }
 
     private void insertLayer5(final List<Layer5DTO> layer5DTOs, Long maxId) {
-        String sql = "insert into Layer5 (id, 시간대, 요일, 날씨, 기온, 조도) values (?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer5 (id, time_zone, day_of_week, weather, temperature, illumination) values (?, ?, ?, ?, ?, ?)";
         insertLayer(sql, layer5DTOs, maxId);
     }
 
     private void insertLayer6(final List<Layer6DTO> layer6DTOs, Long maxId) {
-        String sql = "insert into Layer6 (id, Camera센서, Radar센서, LiDAR센서, V2I, V2V, V2P, V2N, V2C, GPS정보, 전자지도정보) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Layer6 (id, camera_sensor, radar_sensor, lidar_sensor, v2i_communication, v2v_communication, v2p_communication, v2n_communication, v2c_communication, gps_information, electronic_map_information) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         insertLayer(sql, layer6DTOs, maxId);
     }
 
     private void insertLayer7(final List<Layer7DTO> layer7DTOs, Long maxId) {
-        String sql = "insert into Layer7 (id, 법ㆍ규제) values (?, ?)";
+        String sql = "insert into Layer7 (id, law_regulation) values (?, ?)";
         executeBatchInsert(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer7DTO layer7DTO = layer7DTOs.get(i);
                 ps.setLong(1, maxId + (long) i + 1);
-                ps.setString(2, layer7DTO.get법ㆍ규제());
+                ps.setString(2, layer7DTO.getLaw_regulation());
             }
             public int getBatchSize() {
                 return layer7DTOs.size();

@@ -12,10 +12,9 @@ public class Layer5 {
     private Long id;
     @OneToOne(mappedBy = "layer5")
     private Scenario scenario;
-
-    private String 시간대;
-    private String 요일;
-    private String 날씨;
-    private String 기온;
-    private String 조도;
+    private String time_zone;
+    private String day_of_week;
+    private String weather;
+    private String temperature;
+    private String illumination;
 }
