@@ -5,11 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import kguscenariobuilderserver.entity.layer.Layer7;
 import lombok.*;
 
-@Getter
-@Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public record Layer7DTO(
     @NotBlank
     @JsonProperty("법ㆍ규제")

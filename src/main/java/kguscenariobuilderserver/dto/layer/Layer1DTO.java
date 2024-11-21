@@ -2,45 +2,45 @@ package kguscenariobuilderserver.dto.layer;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import kguscenariobuilderserver.entity.layer.Layer1;
 import lombok.Builder;
 
 @Builder
 public record Layer1DTO(
-        @NotNull
+        @NotBlank
         @JsonProperty("도로 기능과 등급")
         String road_function_and_Grade,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("차로폭")
         String lane_width,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("갓길폭")
         String shoulder_width,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("도로선형")
         String road_alignment,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("도로경사")
         String road_gradient,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("차로 수")
         String number_of_lanes,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("도로 포장")
         String road_surface,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("노면 상태")
         String pavement_condition,
 
-        @NotNull
+        @NotBlank
         @JsonProperty("도로유형")
         String road_type
 ) {
