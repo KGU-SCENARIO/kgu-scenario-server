@@ -1,47 +1,53 @@
 package kguscenariobuilderserver.dto.layer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import kguscenariobuilderserver.entity.layer.Layer6;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
-public class Layer6DTO {
-
+public record Layer6DTO(
+    @NotBlank
     @JsonProperty("Camera센서")
-    private String camera_sensor;
+    String camera_sensor,
 
+    @NotBlank
     @JsonProperty("Radar센서")
-    private String radar_sensor;
+    String radar_sensor,
 
+    @NotBlank
     @JsonProperty("LiDAR센서")
-    private String lidar_sensor;
+    String lidar_sensor,
 
+    @NotBlank
     @JsonProperty("V2I")
-    private String v2i_communication;
+    String v2i_communication,
 
+    @NotBlank
     @JsonProperty("V2V")
-    private String v2v_communication;
+    String v2v_communication,
 
+    @NotBlank
     @JsonProperty("V2P")
-    private String v2p_communication;
+    String v2p_communication,
 
+    @NotBlank
     @JsonProperty("V2N")
-    private String v2n_communication;
+    String v2n_communication,
 
+    @NotBlank
     @JsonProperty("V2C")
-    private String v2c_communication;
+    String v2c_communication,
 
+    @NotBlank
     @JsonProperty("GPS정보")
-    private String gps_information;
+    String gps_information,
 
+    @NotBlank
     @JsonProperty("전자지도정보")
-    private String electronic_map_information;
-
-    public static Layer6DTO toDTO(Layer6 layer6){
+    String electronic_map_information
+) {
+    public static Layer6DTO from(Layer6 layer6){
         return Layer6DTO.builder()
                 .camera_sensor(layer6.getCamera_sensor())
                 .radar_sensor(layer6.getRadar_sensor())
