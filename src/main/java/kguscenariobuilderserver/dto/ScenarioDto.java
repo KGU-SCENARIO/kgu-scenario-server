@@ -2,32 +2,41 @@ package kguscenariobuilderserver.dto;
 
 import kguscenariobuilderserver.dto.layer.*;
 import kguscenariobuilderserver.entity.Scenario;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class ScenarioDTO {
-    private Long id;
-    private Layer1DTO layer1DTO;
-    private Layer2DTO layer2DTO;
-    private Layer3DTO layer3DTO;
-    private Layer4DTO layer4DTO;
-    private Layer5DTO layer5DTO;
-    private Layer6DTO layer6DTO;
-    private Layer7DTO layer7DTO;
-    private String tc_description;
-    public ScenarioDTO(Scenario scenario){
-        this.id = scenario.getId();
-        this.layer1DTO = Layer1DTO.toDTO(scenario.getLayer1());
-        this.layer2DTO = Layer2DTO.toDTO(scenario.getLayer2());
-        this.layer3DTO = Layer3DTO.toDTO(scenario.getLayer3());
-        this.layer4DTO = Layer4DTO.toDTO(scenario.getLayer4());
-        this.layer5DTO = Layer5DTO.toDTO(scenario.getLayer5());
-        this.layer6DTO = Layer6DTO.toDTO(scenario.getLayer6());
-        this.layer7DTO = Layer7DTO.toDTO(scenario.getLayer7());
-        this.tc_description = scenario.getTc_description();
+
+@Builder
+public record ScenarioDTO(
+
+    Long id,
+
+    Layer1DTO layer1DTO,
+
+    Layer2DTO layer2DTO,
+
+    Layer3DTO layer3DTO,
+
+    Layer4DTO layer4DTO,
+
+    Layer5DTO layer5DTO,
+
+    Layer6DTO layer6DTO,
+
+    Layer7DTO layer7DTO,
+
+    String tc_description
+) {
+    public ScenarioDTO(Scenario scenario) {
+        this(
+            scenario.getId(),
+            Layer1DTO.from(scenario.getLayer1()),
+            Layer2DTO.from(scenario.getLayer2()),
+            Layer3DTO.from(scenario.getLayer3()),
+            Layer4DTO.from(scenario.getLayer4()),
+            Layer5DTO.from(scenario.getLayer5()),
+            Layer6DTO.from(scenario.getLayer6()),
+            Layer7DTO.from(scenario.getLayer7()),
+            scenario.getTc_description()
+        );
     }
 }

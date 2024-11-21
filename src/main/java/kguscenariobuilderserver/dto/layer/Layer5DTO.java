@@ -1,32 +1,35 @@
 package kguscenariobuilderserver.dto.layer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.validation.constraints.NotBlank;
+
 import kguscenariobuilderserver.entity.layer.Layer5;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
-public class Layer5DTO {
-
+public record Layer5DTO(
+    @NotBlank
     @JsonProperty("시간대")
-    private String time_zone;
+    String time_zone,
 
+    @NotBlank
     @JsonProperty("요일")
-    private String day_of_week;
+    String day_of_week,
 
+    @NotBlank
     @JsonProperty("날씨")
-    private String weather;
+    String weather,
 
+    @NotBlank
     @JsonProperty("기온")
-    private String temperature;
+    String temperature,
 
+    @NotBlank
     @JsonProperty("조도")
-    private String illumination;
-
-    public static Layer5DTO toDTO(Layer5 layer5){
+    String illumination
+) {
+    public static Layer5DTO from(Layer5 layer5){
         return Layer5DTO.builder()
                 .time_zone(layer5.getTime_zone())
                 .day_of_week(layer5.getDay_of_week())

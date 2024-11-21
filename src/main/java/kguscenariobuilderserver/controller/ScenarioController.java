@@ -1,11 +1,15 @@
 package kguscenariobuilderserver.controller;
 
-import kguscenariobuilderserver.dto.InsertScenario;
+import jakarta.validation.Valid;
+import kguscenariobuilderserver.dto.ScenarioRequest;
+import kguscenariobuilderserver.dto.response.Response;
 import kguscenariobuilderserver.service.ScenarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import farmeasy.server.dto.response.Response;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 
 @RestController
@@ -16,19 +20,20 @@ public class ScenarioController {
     private final ScenarioService scenarioService;
 
     @GetMapping
-    public Response readScenarios(@RequestParam(required = false, defaultValue = "0",value = "page") int pageNo){
-        return Response.success(scenarioService.readScenarioDTOs(pageNo));
+    public ResponseEntity<Response> readScenarios(@RequestParam(required = false, defaultValue = "0",value = "page") int pageNo){
+        return ResponseEntity.ok(Response.success(scenarioService.readScenarioDTOs(pageNo), 200));
     }
 
     @PostMapping
-    public Response insertScenarios(@RequestBody InsertScenario insertScenario){
-        return Response.success(scenarioService.saveScenarios(insertScenario));
+    public ResponseEntity<Response> insertScenarios(@Valid @RequestBody ScenarioRequest scenarioRequest){
+        return ResponseEntity.status(CREATED).body(Response.success(scenarioService.saveScenarios(scenarioRequest), 201));
     }
 
 
     @DeleteMapping
-    public Response deleteScenarios(){
-        return Response.success(scenarioService.deleteScenarios());
+    public ResponseEntity<Response> deleteScenarios(){
+        scenarioService.deleteScenarios();
+        return ResponseEntity.status(NO_CONTENT).body(Response.success(null, 204));
     }
 
 }

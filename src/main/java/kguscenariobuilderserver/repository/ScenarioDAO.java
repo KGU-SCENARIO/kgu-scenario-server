@@ -1,6 +1,6 @@
 package kguscenariobuilderserver.repository;
 
-import kguscenariobuilderserver.dto.InsertScenario;
+import kguscenariobuilderserver.dto.ScenarioRequest;
 import kguscenariobuilderserver.dto.layer.*;
 import kguscenariobuilderserver.service.ValidationService;
 import lombok.RequiredArgsConstructor;
@@ -24,42 +24,42 @@ public class ScenarioDAO {
     private final JdbcTemplate jdbcTemplate;
     private final ValidationService validationService;
 
-    public int batchInsertScenarios(InsertScenario insertScenario) {
+    public int batchInsertScenarios(ScenarioRequest scenarioRequest) {
         Long maxId = findMaxTcId();
 
-        List<Integer> invalidIndexes = IntStream.range(0, insertScenario.getLayer1DTOs().size())
+        List<Integer> invalidIndexes = IntStream.range(0, scenarioRequest.layer1DTOs().size())
                 .parallel()
-                .filter(i -> !validationService.isValidLayer1(insertScenario.getLayer1DTOs().get(i))
-                        || !validationService.isValidLayer2(insertScenario.getLayer2DTOs().get(i))
-                        || !validationService.isValidLayer4(insertScenario.getLayer4DTOs().get(i))
-                        || !validationService.isValidLayer5(insertScenario.getLayer5DTOs().get(i))
-                        || !validationService.isValidLayer1WithLayer2(insertScenario.getLayer1DTOs().get(i),insertScenario.getLayer2DTOs().get(i))
-                        || !validationService.isValidLayer1WithLayer5(insertScenario.getLayer1DTOs().get(i),insertScenario.getLayer5DTOs().get(i))
-                        || !validationService.isValidLayer2WithLayer5(insertScenario.getLayer2DTOs().get(i),insertScenario.getLayer5DTOs().get(i))
-                        || !validationService.isValidLayer2WithLayer4(insertScenario.getLayer2DTOs().get(i),insertScenario.getLayer4DTOs().get(i))
-                        || !validationService.isValidLayer1WithLayer4(insertScenario.getLayer1DTOs().get(i),insertScenario.getLayer4DTOs().get(i))
+                .filter(i -> !validationService.isValidLayer1(scenarioRequest.layer1DTOs().get(i))
+                        || !validationService.isValidLayer2(scenarioRequest.layer2DTOs().get(i))
+                        || !validationService.isValidLayer4(scenarioRequest.layer4DTOs().get(i))
+                        || !validationService.isValidLayer5(scenarioRequest.layer5DTOs().get(i))
+                        || !validationService.isValidLayer1WithLayer2(scenarioRequest.layer1DTOs().get(i), scenarioRequest.layer2DTOs().get(i))
+                        || !validationService.isValidLayer1WithLayer5(scenarioRequest.layer1DTOs().get(i), scenarioRequest.layer5DTOs().get(i))
+                        || !validationService.isValidLayer2WithLayer5(scenarioRequest.layer2DTOs().get(i), scenarioRequest.layer5DTOs().get(i))
+                        || !validationService.isValidLayer2WithLayer4(scenarioRequest.layer2DTOs().get(i), scenarioRequest.layer4DTOs().get(i))
+                        || !validationService.isValidLayer1WithLayer4(scenarioRequest.layer1DTOs().get(i), scenarioRequest.layer4DTOs().get(i))
                         )
                 .boxed()
                 .collect(Collectors.toList());
 
-        removeInvalidIndexes(insertScenario.getLayer1DTOs(), invalidIndexes);
-        removeInvalidIndexes(insertScenario.getLayer2DTOs(), invalidIndexes);
-        removeInvalidIndexes(insertScenario.getLayer3DTOs(), invalidIndexes);
-        removeInvalidIndexes(insertScenario.getLayer4DTOs(), invalidIndexes);
-        removeInvalidIndexes(insertScenario.getLayer5DTOs(), invalidIndexes);
-        removeInvalidIndexes(insertScenario.getLayer6DTOs(), invalidIndexes);
-        removeInvalidIndexes(insertScenario.getLayer7DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer1DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer2DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer3DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer4DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer5DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer6DTOs(), invalidIndexes);
+        removeInvalidIndexes(scenarioRequest.layer7DTOs(), invalidIndexes);
 
-        int size = insertScenario.getLayer1DTOs().size();
+        int size = scenarioRequest.layer1DTOs().size();
 
-        insertLayer1(insertScenario.getLayer1DTOs(), maxId);
-        insertLayer2(insertScenario.getLayer2DTOs(), maxId);
-        insertLayer3(insertScenario.getLayer3DTOs(), maxId);
-        insertLayer4(insertScenario.getLayer4DTOs(), maxId);
-        insertLayer5(insertScenario.getLayer5DTOs(), maxId);
-        insertLayer6(insertScenario.getLayer6DTOs(), maxId);
-        insertLayer7(insertScenario.getLayer7DTOs(), maxId);
-        insertScenario(insertScenario.getTc_description(), maxId, size);
+        insertLayer1(scenarioRequest.layer1DTOs(), maxId);
+        insertLayer2(scenarioRequest.layer2DTOs(), maxId);
+        insertLayer3(scenarioRequest.layer3DTOs(), maxId);
+        insertLayer4(scenarioRequest.layer4DTOs(), maxId);
+        insertLayer5(scenarioRequest.layer5DTOs(), maxId);
+        insertLayer6(scenarioRequest.layer6DTOs(), maxId);
+        insertLayer7(scenarioRequest.layer7DTOs(), maxId);
+        insertScenario(scenarioRequest.tc_description(), maxId, size);
 
         return size;
     }
@@ -132,7 +132,7 @@ public class ScenarioDAO {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Layer7DTO layer7DTO = layer7DTOs.get(i);
                 ps.setLong(1, maxId + (long) i + 1);
-                ps.setString(2, layer7DTO.getLaw_regulation());
+                ps.setString(2, layer7DTO.law_regulation());
             }
             public int getBatchSize() {
                 return layer7DTOs.size();

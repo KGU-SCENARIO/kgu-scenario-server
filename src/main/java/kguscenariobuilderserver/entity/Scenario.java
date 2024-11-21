@@ -21,33 +21,34 @@ public class Scenario {
     private Long id;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer1_id")
+    @JoinColumn(name = "layer1_id", nullable = false)
     private Layer1 layer1;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer2_id")
+    @JoinColumn(name = "layer2_id", nullable = false)
     private Layer2 layer2;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer3_id")
+    @JoinColumn(name = "layer3_id", nullable = false)
     private Layer3 layer3;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer4_id")
+    @JoinColumn(name = "layer4_id", nullable = false)
     private Layer4 layer4;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer5_id")
+    @JoinColumn(name = "layer5_id", nullable = false)
     private Layer5 layer5;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer6_id")
+    @JoinColumn(name = "layer6_id", nullable = false)
     private Layer6 layer6;
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "layer7_id")
+    @JoinColumn(name = "layer7_id", nullable = false)
     private Layer7 layer7;
 
+    @Column(nullable = false)
     private String tc_description;
 
     private Timestamp tc_create_at;

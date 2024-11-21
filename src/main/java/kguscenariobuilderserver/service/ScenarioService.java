@@ -1,22 +1,23 @@
 package kguscenariobuilderserver.service;
 
-import kguscenariobuilderserver.dto.InsertScenario;
 import kguscenariobuilderserver.dto.ScenarioDTO;
-import kguscenariobuilderserver.entity.layer.Layer3;
-import kguscenariobuilderserver.exception.InsertScenarioException;
+import kguscenariobuilderserver.dto.ScenarioRequest;
+import kguscenariobuilderserver.exception.custom.ScenarioCountMismatchException;
 import kguscenariobuilderserver.repository.ScenarioDAO;
 import kguscenariobuilderserver.repository.ScenarioRepository;
 import kguscenariobuilderserver.repository.layer.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.domain.Pageable;
 
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class ScenarioService {
 
@@ -35,9 +36,9 @@ public class ScenarioService {
     @Value("${page.size}") private int PAGE_SIZE;
 
     @Transactional
-    public String saveScenarios(InsertScenario insertScenario){
-        validateScenarioSize(insertScenario);
-        int size = scenarioDAO.batchInsertScenarios(insertScenario);
+    public String saveScenarios(ScenarioRequest scenarioRequest){
+        validateScenarioSize(scenarioRequest);
+        int size = scenarioDAO.batchInsertScenarios(scenarioRequest);
         return size + "개 시나리오 저장 성공 !";
     }
 
@@ -48,8 +49,7 @@ public class ScenarioService {
     }
 
     @Transactional
-    public String deleteScenarios(){
-
+    public void deleteScenarios(){
         scenarioRepository.deleteAllInBatch();
         layer1Repository.deleteAllInBatch();
         layer2Repository.deleteAllInBatch();
@@ -58,20 +58,20 @@ public class ScenarioService {
         layer5Repository.deleteAllInBatch();
         layer6Repository.deleteAllInBatch();
         layer7Repository.deleteAllInBatch();
-
-        return "삭제 완료";
     }
 
-    public void validateScenarioSize(InsertScenario insertScenario) {
-        int size = insertScenario.getLayer1DTOs().size();
+    public void validateScenarioSize(ScenarioRequest scenarioRequest) {
+        int size = scenarioRequest.layer1DTOs().size();
 
-        if (size != insertScenario.getLayer2DTOs().size() ||
-                size != insertScenario.getLayer3DTOs().size() ||
-                size != insertScenario.getLayer4DTOs().size() ||
-                size != insertScenario.getLayer5DTOs().size() ||
-                size != insertScenario.getLayer6DTOs().size() ||
-                size != insertScenario.getLayer7DTOs().size()) {
-            throw new InsertScenarioException("각 레이어의 크기가 일치하지 않습니다.");
+        boolean result = size != scenarioRequest.layer2DTOs().size() ||
+            size != scenarioRequest.layer3DTOs().size() ||
+            size != scenarioRequest.layer4DTOs().size() ||
+            size != scenarioRequest.layer5DTOs().size() ||
+            size != scenarioRequest.layer6DTOs().size() ||
+            size != scenarioRequest.layer7DTOs().size();
+
+        if (result) {
+            throw new ScenarioCountMismatchException();
         }
     }
 
