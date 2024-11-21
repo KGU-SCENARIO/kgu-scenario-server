@@ -1,4 +1,4 @@
-package farmeasy.server.dto.response;
+package kguscenariobuilderserver.dto.response;
 
 interface Result {
 
