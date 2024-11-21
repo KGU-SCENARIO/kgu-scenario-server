@@ -13,6 +13,7 @@ public class Layer4 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(mappedBy = "layer4")
+
     @JoinColumn(nullable = false)
     private Scenario scenario;
 
@@ -78,7 +79,7 @@ public class Layer4 {
 
     @Column(nullable = false)
     private String traffic_condition_LOS;
-
+  
     @Embedded
     @Column(nullable = false)
     private AutonomousVehicle autonomous_vehicle;

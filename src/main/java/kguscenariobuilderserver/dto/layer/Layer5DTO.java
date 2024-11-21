@@ -1,7 +1,9 @@
 package kguscenariobuilderserver.dto.layer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.NotBlank;
+
 import kguscenariobuilderserver.entity.layer.Layer5;
 import lombok.Builder;
 

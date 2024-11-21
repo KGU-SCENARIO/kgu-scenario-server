@@ -14,7 +14,6 @@ public class Layer6 {
     @OneToOne(mappedBy = "layer6")
     private Scenario scenario;
 
-
     @Column(nullable = false)
     private String camera_sensor;
 

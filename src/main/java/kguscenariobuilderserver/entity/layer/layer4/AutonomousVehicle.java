@@ -1,6 +1,7 @@
 package kguscenariobuilderserver.entity.layer.layer4;
 
 import jakarta.persistence.Column;
+
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;

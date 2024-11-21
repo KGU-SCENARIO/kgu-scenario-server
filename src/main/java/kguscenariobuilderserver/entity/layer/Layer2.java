@@ -14,7 +14,6 @@ public class Layer2 {
     @OneToOne(mappedBy = "layer2")
     private Scenario scenario;
 
-
     @Column(nullable = false)
     private String median_barrier;
 
