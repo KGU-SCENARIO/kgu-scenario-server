@@ -13,6 +13,7 @@ public class Layer4 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(mappedBy = "layer4")
+    @JoinColumn(nullable = false)
     private Scenario scenario;
 
     @Embedded
@@ -27,6 +28,7 @@ public class Layer4 {
             @AttributeOverride(name="action_perform", column=@Column(name="npc1_action_perform")),
             @AttributeOverride(name="trigger_action", column=@Column(name="npc1_trigger_action"))
     })
+    @Column(nullable = false)
     private Npc npc1;
 
     @Embedded
@@ -41,6 +43,7 @@ public class Layer4 {
             @AttributeOverride(name="action_perform", column=@Column(name="npc2_action_perform")),
             @AttributeOverride(name="trigger_action", column=@Column(name="npc2_trigger_action"))
     })
+    @Column(nullable = false)
     private Npc npc2;
 
     @Embedded
@@ -55,6 +58,7 @@ public class Layer4 {
             @AttributeOverride(name="action_perform", column=@Column(name="npc3_action_perform")),
             @AttributeOverride(name="trigger_action", column=@Column(name="npc3_trigger_action"))
     })
+    @Column(nullable = false)
     private Npc npc3;
 
     @Embedded
@@ -69,10 +73,14 @@ public class Layer4 {
             @AttributeOverride(name="action_perform", column=@Column(name="npc4_action_perform")),
             @AttributeOverride(name="trigger_action", column=@Column(name="npc4_trigger_action"))
     })
+    @Column(nullable = false)
     private Npc npc4;
+
+    @Column(nullable = false)
     private String traffic_condition_LOS;
 
     @Embedded
+    @Column(nullable = false)
     private AutonomousVehicle autonomous_vehicle;
 
     public Layer4(){
