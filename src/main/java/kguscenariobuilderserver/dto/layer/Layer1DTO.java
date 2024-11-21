@@ -2,43 +2,49 @@ package kguscenariobuilderserver.dto.layer;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 import kguscenariobuilderserver.entity.layer.Layer1;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
-public class Layer1DTO {
-    @JsonProperty("도로 기능과 등급")
-    private String road_function_and_Grade;
+public record Layer1DTO(
+        @NotNull
+        @JsonProperty("도로 기능과 등급")
+        String road_function_and_Grade,
 
-    @JsonProperty("차로폭")
-    private String lane_width;
+        @NotNull
+        @JsonProperty("차로폭")
+        String lane_width,
 
-    @JsonProperty("갓길폭")
-    private String shoulder_width;
+        @NotNull
+        @JsonProperty("갓길폭")
+        String shoulder_width,
 
-    @JsonProperty("도로선형")
-    private String road_alignment;
+        @NotNull
+        @JsonProperty("도로선형")
+        String road_alignment,
 
-    @JsonProperty("도로경사")
-    private String road_gradient;
+        @NotNull
+        @JsonProperty("도로경사")
+        String road_gradient,
 
-    @JsonProperty("차로 수")
-    private String number_of_lanes;
+        @NotNull
+        @JsonProperty("차로 수")
+        String number_of_lanes,
 
-    @JsonProperty("도로 포장")
-    private String road_surface;
+        @NotNull
+        @JsonProperty("도로 포장")
+        String road_surface,
 
-    @JsonProperty("노면 상태")
-    private String pavement_condition;
+        @NotNull
+        @JsonProperty("노면 상태")
+        String pavement_condition,
 
-    @JsonProperty("도로유형")
-    private String road_type;
-
-    public static Layer1DTO toDTO(Layer1 layer1){
+        @NotNull
+        @JsonProperty("도로유형")
+        String road_type
+) {
+    public static Layer1DTO from(Layer1 layer1){
         return Layer1DTO.builder()
                 .road_function_and_Grade(layer1.getRoad_function_and_Grade())
                 .lane_width(layer1.getLane_width())
