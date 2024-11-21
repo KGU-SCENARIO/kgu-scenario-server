@@ -12,75 +12,75 @@ public class Layer4 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "layer4",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "layer4")
     private Scenario scenario;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name="객체종류", column=@Column(name="NPC1_객체종류")),
-            @AttributeOverride(name="객체위치_차로", column=@Column(name="NPC1_객체위치_차로")),
-            @AttributeOverride(name="객체위치_상대거리", column=@Column(name="NPC1_객체위치_상대거리")),
-            @AttributeOverride(name="객체속도", column=@Column(name="NPC1_객체속도")),
-            @AttributeOverride(name="객체가감속도", column=@Column(name="NPC1_객체가감속도")),
-            @AttributeOverride(name="Trigger_가감속", column=@Column(name="NPC1_Trigger_가감속")),
-            @AttributeOverride(name="객체행동_시작", column=@Column(name="NPC1_객체행동_시작")),
-            @AttributeOverride(name="객체행동_동작", column=@Column(name="NPC1_객체행동_동작")),
-            @AttributeOverride(name="Trigger_동작", column=@Column(name="NPC1_Trigger_동작"))
+            @AttributeOverride(name="type", column=@Column(name="npc1_type")),
+            @AttributeOverride(name="position_lane", column=@Column(name="npc1_position_lane")),
+            @AttributeOverride(name="relative_distance", column=@Column(name="npc1_relative_distance")),
+            @AttributeOverride(name="speed", column=@Column(name="npc1_speed")),
+            @AttributeOverride(name="acceleration", column=@Column(name="npc1_acceleration")),
+            @AttributeOverride(name="trigger_acceleration", column=@Column(name="npc1_trigger_acceleration")),
+            @AttributeOverride(name="action_start", column=@Column(name="npc1_action_start")),
+            @AttributeOverride(name="action_perform", column=@Column(name="npc1_action_perform")),
+            @AttributeOverride(name="trigger_action", column=@Column(name="npc1_trigger_action"))
     })
-    private Npc NPC1;
+    private Npc npc1;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name="객체종류", column=@Column(name="NPC2_객체종류")),
-            @AttributeOverride(name="객체위치_차로", column=@Column(name="NPC2_객체위치_차로")),
-            @AttributeOverride(name="객체위치_상대거리", column=@Column(name="NPC2_객체위치_상대거리")),
-            @AttributeOverride(name="객체속도", column=@Column(name="NPC2_객체속도")),
-            @AttributeOverride(name="객체가감속도", column=@Column(name="NPC2_객체가감속도")),
-            @AttributeOverride(name="Trigger_가감속", column=@Column(name="NPC2_Trigger_가감속")),
-            @AttributeOverride(name="객체행동_시작", column=@Column(name="NPC2_객체행동_시작")),
-            @AttributeOverride(name="객체행동_동작", column=@Column(name="NPC2_객체행동_동작")),
-            @AttributeOverride(name="Trigger_동작", column=@Column(name="NPC2_Trigger_동작"))
+            @AttributeOverride(name="type", column=@Column(name="npc2_type")),
+            @AttributeOverride(name="position_lane", column=@Column(name="npc2_position_lane")),
+            @AttributeOverride(name="relative_distance", column=@Column(name="npc2_relative_distance")),
+            @AttributeOverride(name="speed", column=@Column(name="npc2_speed")),
+            @AttributeOverride(name="acceleration", column=@Column(name="npc2_acceleration")),
+            @AttributeOverride(name="trigger_acceleration", column=@Column(name="npc2_trigger_acceleration")),
+            @AttributeOverride(name="action_start", column=@Column(name="npc2_action_start")),
+            @AttributeOverride(name="action_perform", column=@Column(name="npc2_action_perform")),
+            @AttributeOverride(name="trigger_action", column=@Column(name="npc2_trigger_action"))
     })
-    private Npc NPC2;
+    private Npc npc2;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name="객체종류", column=@Column(name="NPC3_객체종류")),
-            @AttributeOverride(name="객체위치_차로", column=@Column(name="NPC3_객체위치_차로")),
-            @AttributeOverride(name="객체위치_상대거리", column=@Column(name="NPC3_객체위치_상대거리")),
-            @AttributeOverride(name="객체속도", column=@Column(name="NPC3_객체속도")),
-            @AttributeOverride(name="객체가감속도", column=@Column(name="NPC3_객체가감속도")),
-            @AttributeOverride(name="Trigger_가감속", column=@Column(name="NPC3_Trigger_가감속")),
-            @AttributeOverride(name="객체행동_시작", column=@Column(name="NPC3_객체행동_시작")),
-            @AttributeOverride(name="객체행동_동작", column=@Column(name="NPC3_객체행동_동작")),
-            @AttributeOverride(name="Trigger_동작", column=@Column(name="NPC3_Trigger_동작"))
+            @AttributeOverride(name="type", column=@Column(name="npc3_type")),
+            @AttributeOverride(name="position_lane", column=@Column(name="npc3_position_lane")),
+            @AttributeOverride(name="relative_distance", column=@Column(name="npc3_relative_distance")),
+            @AttributeOverride(name="speed", column=@Column(name="npc3_speed")),
+            @AttributeOverride(name="acceleration", column=@Column(name="npc3_acceleration")),
+            @AttributeOverride(name="trigger_acceleration", column=@Column(name="npc3_trigger_acceleration")),
+            @AttributeOverride(name="action_start", column=@Column(name="npc3_action_start")),
+            @AttributeOverride(name="action_perform", column=@Column(name="npc3_action_perform")),
+            @AttributeOverride(name="trigger_action", column=@Column(name="npc3_trigger_action"))
     })
-    private Npc NPC3;
+    private Npc npc3;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name="객체종류", column=@Column(name="NPC4_객체종류")),
-            @AttributeOverride(name="객체위치_차로", column=@Column(name="NPC4_객체위치_차로")),
-            @AttributeOverride(name="객체위치_상대거리", column=@Column(name="NPC4_객체위치_상대거리")),
-            @AttributeOverride(name="객체속도", column=@Column(name="NPC4_객체속도")),
-            @AttributeOverride(name="객체가감속도", column=@Column(name="NPC4_객체가감속도")),
-            @AttributeOverride(name="Trigger_가감속", column=@Column(name="NPC4_Trigger_가감속")),
-            @AttributeOverride(name="객체행동_시작", column=@Column(name="NPC4_객체행동_시작")),
-            @AttributeOverride(name="객체행동_동작", column=@Column(name="NPC4_객체행동_동작")),
-            @AttributeOverride(name="Trigger_동작", column=@Column(name="NPC4_Trigger_동작"))
+            @AttributeOverride(name="type", column=@Column(name="npc4_type")),
+            @AttributeOverride(name="position_lane", column=@Column(name="npc4_position_lane")),
+            @AttributeOverride(name="relative_distance", column=@Column(name="npc4_relative_distance")),
+            @AttributeOverride(name="speed", column=@Column(name="npc4_speed")),
+            @AttributeOverride(name="acceleration", column=@Column(name="npc4_acceleration")),
+            @AttributeOverride(name="trigger_acceleration", column=@Column(name="npc4_trigger_acceleration")),
+            @AttributeOverride(name="action_start", column=@Column(name="npc4_action_start")),
+            @AttributeOverride(name="action_perform", column=@Column(name="npc4_action_perform")),
+            @AttributeOverride(name="trigger_action", column=@Column(name="npc4_trigger_action"))
     })
-    private Npc NPC4;
-    private String 교통상황_LOS;
+    private Npc npc4;
+    private String traffic_condition_LOS;
 
     @Embedded
-    private 자율주행차 자율주행차;
+    private AutonomousVehicle autonomous_vehicle;
 
     public Layer4(){
-        this.NPC1 = new Npc();
-        this.NPC2 = new Npc();
-        this.NPC3 = new Npc();
-        this.NPC4 = new Npc();
-        this.자율주행차 = new 자율주행차();
+        this.npc1 = new Npc();
+        this.npc2 = new Npc();
+        this.npc3 = new Npc();
+        this.npc4 = new Npc();
+        this.autonomous_vehicle= new AutonomousVehicle();
     }
 
 }

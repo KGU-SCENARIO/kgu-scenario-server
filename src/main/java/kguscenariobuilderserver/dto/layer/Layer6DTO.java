@@ -1,37 +1,64 @@
 package kguscenariobuilderserver.dto.layer;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import kguscenariobuilderserver.entity.layer.Layer6;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
-public class Layer6DTO {
-    private String Camera센서;
-    private String Radar센서;
-    private String LiDAR센서;
-    private String V2I;
-    private String V2V;
-    private String V2P;
-    private String V2N;
-    private String V2C;
-    private String GPS정보;
-    private String 전자지도정보;
+public record Layer6DTO(
+    @NotBlank
+    @JsonProperty("Camera센서")
+    String camera_sensor,
 
-    public static Layer6DTO toDTO(Layer6 layer6){
+    @NotBlank
+    @JsonProperty("Radar센서")
+    String radar_sensor,
+
+    @NotBlank
+    @JsonProperty("LiDAR센서")
+    String lidar_sensor,
+
+    @NotBlank
+    @JsonProperty("V2I")
+    String v2i_communication,
+
+    @NotBlank
+    @JsonProperty("V2V")
+    String v2v_communication,
+
+    @NotBlank
+    @JsonProperty("V2P")
+    String v2p_communication,
+
+    @NotBlank
+    @JsonProperty("V2N")
+    String v2n_communication,
+
+    @NotBlank
+    @JsonProperty("V2C")
+    String v2c_communication,
+
+    @NotBlank
+    @JsonProperty("GPS정보")
+    String gps_information,
+
+    @NotBlank
+    @JsonProperty("전자지도정보")
+    String electronic_map_information
+) {
+    public static Layer6DTO from(Layer6 layer6){
         return Layer6DTO.builder()
-                .Camera센서(layer6.getCamera센서())
-                .Radar센서(layer6.getRadar센서())
-                .LiDAR센서(layer6.getLiDAR센서())
-                .V2I(layer6.getV2I())
-                .V2V(layer6.getV2V())
-                .V2P(layer6.getV2P())
-                .V2N(layer6.getV2N())
-                .V2C(layer6.getV2C())
-                .GPS정보(layer6.getGPS정보())
-                .전자지도정보(layer6.get전자지도정보())
+                .camera_sensor(layer6.getCamera_sensor())
+                .radar_sensor(layer6.getRadar_sensor())
+                .lidar_sensor(layer6.getLidar_sensor())
+                .v2i_communication(layer6.getV2i_communication())
+                .v2v_communication(layer6.getV2v_communication())
+                .v2p_communication(layer6.getV2p_communication())
+                .v2n_communication(layer6.getV2n_communication())
+                .v2c_communication(layer6.getV2c_communication())
+                .gps_information(layer6.getGps_information())
+                .electronic_map_information(layer6.getElectronic_map_information())
                 .build();
     }
 }

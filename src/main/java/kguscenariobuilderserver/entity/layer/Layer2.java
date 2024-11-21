@@ -10,33 +10,33 @@ public class Layer2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "layer2",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "layer2")
     private Scenario scenario;
 
-    private String 중앙분리대;
-    private String 방호울타리;
-    private String 충격흡수시설;
-    private String 연속조명;
-    private String 국부조명;
-    private String 과속방지턱;
-    private String 차량신호;
-    private String 도로상태예고;
-    private String 노면상황예고;
-    private String 기상상황예고;
-    private String 기타주의예고;
-    private String 통행금지;
-    private String 통행제한;
-    private String 금지사항;
-    private String 도로지정;
-    private String 통행방법;
-    private String 중앙선;
-    private String 차선;
-    private String 사전예고표시;
-    private String 안전속도표시;
-    private String 금지구역표시;
-    private int 최고제한속도;
-    private String 최저제한속도;
-    private String 보호구역;
-    private String 전용도로;
+    private String median_barrier;
+    private String guardrail;
+    private String impact_absorbing_facility;
+    private String continuous_lighting;
+    private String local_lighting;
+    private String speed_bump;
+    private String vehicle_signal;
+    private String road_condition_alert;
+    private String pavement_condition_alert;
+    private String weather_condition_alert;
+    private String other_warning_alerts;
+    private String no_entry;
+    private String restricted_access;
+    private String prohibited_items;
+    private String road_designation;
+    private String traffic_method;
+    private String center_line;
+    private String lane_line;
+    private String advance_warning_sign;
+    private String safe_speed_sign;
+    private String no_access_sign;
+    private int maximum_speed_limit;
+    private String minimum_speed_limit;
+    private String protected_zone;
+    private String exclusive_road;
 
 }

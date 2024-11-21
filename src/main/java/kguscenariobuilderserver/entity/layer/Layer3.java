@@ -10,10 +10,9 @@ public class Layer3 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "layer3",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "layer3")
     private Scenario scenario;
-
-    private String 도로공사;
-    private String 선행사고;
-    private String 장애물;
+    private String road_construction;
+    private String previous_accident;
+    private String obstacle;
 }

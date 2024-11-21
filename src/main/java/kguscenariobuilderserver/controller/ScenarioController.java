@@ -1,6 +1,7 @@
 package kguscenariobuilderserver.controller;
 
-import kguscenariobuilderserver.dto.InsertScenario;
+import jakarta.validation.Valid;
+import kguscenariobuilderserver.dto.ScenarioRequest;
 import kguscenariobuilderserver.service.ScenarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,8 @@ public class ScenarioController {
     }
 
     @PostMapping
-    public Response insertScenarios(@RequestBody InsertScenario insertScenario){
-        return Response.success(scenarioService.saveScenarios(insertScenario));
+    public Response insertScenarios(@Valid @RequestBody ScenarioRequest scenarioRequest){
+        return Response.success(scenarioService.saveScenarios(scenarioRequest));
     }
 
 

@@ -1,26 +1,29 @@
 package kguscenariobuilderserver.dto.layer;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import kguscenariobuilderserver.entity.layer.Layer3;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
-public class Layer3DTO {
+public record Layer3DTO (
+        @NotBlank
+        @JsonProperty("도로공사")
+        String road_construction,
 
-    private String 도로공사;
+        @NotBlank
+        @JsonProperty("선행사고")
+        String previous_accident,
 
-    private String 선행사고;
-
-    private String 장애물;
-
-    public static Layer3DTO toDTO(Layer3 layer3){
+        @NotBlank
+        @JsonProperty("장애물")
+        String obstacle
+) {
+    public static Layer3DTO from(Layer3 layer3){
         return Layer3DTO.builder()
-                .도로공사(layer3.get도로공사())
-                .선행사고(layer3.get선행사고())
-                .장애물(layer3.get장애물())
+                .road_construction(layer3.getRoad_construction())
+                .previous_accident(layer3.getPrevious_accident())
+                .obstacle(layer3.getObstacle())
                 .build();
     }
 }

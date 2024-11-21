@@ -1,99 +1,140 @@
 package kguscenariobuilderserver.dto.layer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import kguscenariobuilderserver.entity.layer.Layer2;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
-public class Layer2DTO {
-    private String 중앙분리대;
+public record Layer2DTO(
+        @NotBlank
+        @JsonProperty("중앙분리대")
+        String median_barrier,
 
-    private String 방호울타리;
+        @NotBlank
+        @JsonProperty("방호울타리")
+        String guardrail,
 
-    private String 충격흡수시설;
+        @NotBlank
+        @JsonProperty("충격흡수시설")
+        String impact_absorbing_facility,
 
-    private String 연속조명;
+        @NotBlank
+        @JsonProperty("연속조명")
+        String continuous_lighting,
 
-    private String 국부조명;
+        @NotBlank
+        @JsonProperty("국부조명")
+        String local_lighting,
 
-    private String 과속방지턱;
+        @NotBlank
+        @JsonProperty("과속방지턱")
+        String speed_bump,
 
-    private String 차량신호;
+        @NotBlank
+        @JsonProperty("차량신호")
+        String vehicle_signal,
 
-    @JsonProperty("도로상태 예고")
-    private String 도로상태예고;
+        @NotBlank
+        @JsonProperty("도로상태 예고")
+        String road_condition_alert,
 
-    @JsonProperty("노면상황 예고")
-    private String 노면상황예고;
-    
-    @JsonProperty("기상상황 예고")
-    private String 기상상황예고;
+        @NotBlank
+        @JsonProperty("노면상황 예고")
+        String pavement_condition_alert,
 
-    @JsonProperty("기타주의 예고")
-    private String 기타주의예고;
+        @NotBlank
+        @JsonProperty("기상상황 예고")
+        String weather_condition_alert,
 
-    private String 통행금지;
+        @NotBlank
+        @JsonProperty("기타주의 예고")
+        String other_warning_alerts,
 
-    private String 통행제한;
+        @NotBlank
+        @JsonProperty("통행금지")
+        String no_entry,
 
-    private String 금지사항;
+        @NotBlank
+        @JsonProperty("통행제한")
+        String restricted_access,
 
-    private String 도로지정;
+        @NotBlank
+        @JsonProperty("금지사항")
+        String prohibited_items,
 
-    private String 통행방법;
+        @NotBlank
+        @JsonProperty("도로지정")
+        String road_designation,
 
-    private String 중앙선;
+        @NotBlank
+        @JsonProperty("통행방법")
+        String traffic_method,
 
-    private String 차선;
+        @NotBlank
+        @JsonProperty("중앙선")
+        String center_line,
 
-    @JsonProperty("사전예고 표시")
-    private String 사전예고표시;
+        @NotBlank
+        @JsonProperty("차선")
+        String lane_line,
 
-    @JsonProperty("안전속도 표시")
-    private String 안전속도표시;
+        @NotBlank
+        @JsonProperty("사전예고 표시")
+        String advance_warning_sign,
 
-    @JsonProperty("금지구역 표시")
-    private String 금지구역표시;
+        @NotBlank
+        @JsonProperty("안전속도 표시")
+        String safe_speed_sign,
 
-    private int 최고제한속도;
+        @NotBlank
+        @JsonProperty("금지구역 표시")
+        String no_access_sign,
 
-    private String 최저제한속도;
+        @NotNull
+        @JsonProperty("최고제한속도")
+        int maximum_speed_limit,
 
-    private String 보호구역;
+        @NotBlank
+        @JsonProperty("최저제한속도")
+        String minimum_speed_limit,
 
-    private String 전용도로;
+        @NotBlank
+        @JsonProperty("보호구역")
+        String protected_zone,
 
-    public static Layer2DTO toDTO(Layer2 layer2) {
+        @NotBlank
+        @JsonProperty("전용도로")
+        String exclusive_road
+) {
+    public static Layer2DTO from(Layer2 layer2) {
         return Layer2DTO.builder()
-                .중앙분리대(layer2.get중앙분리대())
-                .방호울타리(layer2.get방호울타리())
-                .충격흡수시설(layer2.get충격흡수시설())
-                .연속조명(layer2.get연속조명())
-                .국부조명(layer2.get국부조명())
-                .과속방지턱(layer2.get과속방지턱())
-                .차량신호(layer2.get차량신호())
-                .도로상태예고(layer2.get도로상태예고())
-                .노면상황예고(layer2.get노면상황예고())
-                .기상상황예고(layer2.get기상상황예고())
-                .기타주의예고(layer2.get기타주의예고())
-                .통행금지(layer2.get통행금지())
-                .통행제한(layer2.get통행제한())
-                .금지사항(layer2.get금지사항())
-                .도로지정(layer2.get도로지정())
-                .통행방법(layer2.get통행방법())
-                .중앙선(layer2.get중앙선())
-                .차선(layer2.get차선())
-                .사전예고표시(layer2.get사전예고표시())
-                .안전속도표시(layer2.get안전속도표시())
-                .금지구역표시(layer2.get금지구역표시())
-                .최고제한속도(layer2.get최고제한속도())
-                .최저제한속도(layer2.get최저제한속도())
-                .보호구역(layer2.get보호구역())
-                .전용도로(layer2.get전용도로())
+                .median_barrier(layer2.getMedian_barrier())
+                .guardrail(layer2.getGuardrail())
+                .impact_absorbing_facility(layer2.getImpact_absorbing_facility())
+                .continuous_lighting(layer2.getContinuous_lighting())
+                .local_lighting(layer2.getLocal_lighting())
+                .speed_bump(layer2.getSpeed_bump())
+                .vehicle_signal(layer2.getVehicle_signal())
+                .road_condition_alert(layer2.getRoad_condition_alert())
+                .pavement_condition_alert(layer2.getPavement_condition_alert())
+                .weather_condition_alert(layer2.getWeather_condition_alert())
+                .other_warning_alerts(layer2.getOther_warning_alerts())
+                .no_entry(layer2.getNo_entry())
+                .restricted_access(layer2.getRestricted_access())
+                .prohibited_items(layer2.getProhibited_items())
+                .road_designation(layer2.getRoad_designation())
+                .traffic_method(layer2.getTraffic_method())
+                .center_line(layer2.getCenter_line())
+                .lane_line(layer2.getLane_line())
+                .advance_warning_sign(layer2.getAdvance_warning_sign())
+                .safe_speed_sign(layer2.getSafe_speed_sign())
+                .no_access_sign(layer2.getNo_access_sign())
+                .maximum_speed_limit(layer2.getMaximum_speed_limit())
+                .minimum_speed_limit(layer2.getMinimum_speed_limit())
+                .protected_zone(layer2.getProtected_zone())
+                .exclusive_road(layer2.getExclusive_road())
                 .build();
     }
 

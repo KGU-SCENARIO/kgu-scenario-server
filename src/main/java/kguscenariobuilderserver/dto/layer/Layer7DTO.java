@@ -1,19 +1,19 @@
 package kguscenariobuilderserver.dto.layer;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import kguscenariobuilderserver.entity.layer.Layer7;
 import lombok.*;
 
-@Getter
-@Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Layer7DTO {
-    private String 법ㆍ규제;
-
-    public static Layer7DTO toDTO(Layer7 layer7){
+public record Layer7DTO(
+    @NotBlank
+    @JsonProperty("법ㆍ규제")
+    String law_regulation
+) {
+    public static Layer7DTO from(Layer7 layer7){
         return Layer7DTO.builder()
-                .법ㆍ규제(layer7.get법ㆍ규제())
+                .law_regulation(layer7.getLaw_regulation())
                 .build();
     }
 }
